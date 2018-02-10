@@ -97,6 +97,36 @@
                 android:resource="@xml/mosquito_app_widget_info" />
         </receiver>
 
+
+        <!-- 두번째 오픈소스 합치기 -->
+        <activity
+            android:name=".ahn3.open2_CourseActivity"
+            android:logo="@drawable/seoul_icon"
+            android:label="Course"/>
+
+        <activity
+            android:name=".ahn3.open2_PlaceActivity"
+            android:label="Place"
+            android:theme="@style/NoActionbarTheme"/>
+
+        <activity
+            android:name=".ahn3.open2_PlaceThirdActivity"
+            android:label="Place 액티비티" />
+
+        <activity
+            android:name=".ahn3.open2_PlaceThirdActivity2"
+            android:label="Place 액티비티" />
+
+        <activity
+            android:name=".ahn3.open2_PlaceThirdActivity3"
+            android:label="Place 액티비티" />
+
+        <activity android:name=".ahn3.open2_MainActivity"/>
+
+        <activity
+            android:name=".ahn3.open2_MapsActivity"
+            android:label="Maps 액티비티" />
+
     </application>
 
 </manifest>

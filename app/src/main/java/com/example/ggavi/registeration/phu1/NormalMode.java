@@ -38,6 +38,7 @@ import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
+import com.example.ggavi.registeration.ahn3.open2_MainActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -218,14 +219,20 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
+
+            // 1번째 버튼
             case R.id.weightSetting:
                 weightSetting();
                 return true;
 
-            // 3번째 버튼: 날씨/대기정보
+            // 2번째 버튼: 바깥 환경
             case R.id.plus_weather:
                 plus_weather();
                 return true;
+
+            // 3번째 버튼: 추천 코스
+            case R.id.plus_course:
+                plus_course();
 
             default:
                 return true;
@@ -234,7 +241,7 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
 
 
 
-    // 2번째 버튼
+    // 1번째 버튼
     public void weightSetting() {
         final Dialog dialog = new Dialog(NormalMode.this); //here, the name of the activity class that you're writing a code in, needs to be replaced
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //for title bars not to be appeared (타이틀 바 안보이게)
@@ -275,12 +282,22 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
         });
     }
 
-    // 3번째 버튼 (날씨/대기정보)
+
+    // 2번째 버튼 (날씨/대기정보)
     public void plus_weather() {
         Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
         startActivity(intent);
         finish();
     }
+
+
+    // 3번째 버튼 (추천 코스)
+    public void plus_course() {
+        Intent intent = new Intent(getApplicationContext(), open2_MainActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) { //when Map is ready(Map이 ready되어 있는 상태)
