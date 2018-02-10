@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ggavi.registeration.lee1.SmsMainActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorBackground">
+
+        <EditText
+            android:id="@+id/numsName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="연락 할 사람"/>
+
+        <EditText
+            android:id="@+id/smsNum1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:hint="연락할 번호를 -없이 입력하세요."/>
+
+        <Button
+            android:id="@+id/click"
+            android:text="등록"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:id="@+id/userIDtext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="님이 등록한 비상연락번호"
+            android:textColor="#000000"
+            />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/smsNumberViewList"
+            android:layout_margin="10dp"
+            android:dividerHeight="1dp"
+            android:divider="#000000" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

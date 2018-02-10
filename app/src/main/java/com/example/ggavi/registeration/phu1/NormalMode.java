@@ -287,7 +287,6 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     public void plus_weather() {
         Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
 
@@ -295,7 +294,6 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     public void plus_course() {
         Intent intent = new Intent(getApplicationContext(), open2_MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
 

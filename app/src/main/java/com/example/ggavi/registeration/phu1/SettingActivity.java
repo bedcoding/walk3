@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,14 +15,21 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.lee2.bluegetheart;
+import com.example.ggavi.registeration.lee1.SmsMainActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
     private TextView loggedInWeightSetting;
+    private TextView SMS_setting;
+    private TextView BlueTooth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_setting);
+
         ((AppCompatActivity) SettingActivity.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "설정" + "</font>")));
 
         if (getSupportActionBar() != null){
@@ -31,6 +37,8 @@ public class SettingActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
+
+        // 첫번째 버튼: 몸무게 설정
         loggedInWeightSetting=(TextView)findViewById(R.id.loggedInWeightSetting);
         loggedInWeightSetting.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,6 +46,33 @@ public class SettingActivity extends AppCompatActivity {
                 weightSetting();
             }
         });
+
+
+        // 두번째 버튼: 전송할 전화번호 설정
+        BlueTooth=(TextView)findViewById(R.id.Bluetooth);
+        BlueTooth.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), bluegetheart.class);
+                startActivity(intent);
+            }
+        });
+
+
+        // 세번째 버튼: 심박수 블루투스 연결
+        SMS_setting=(TextView)findViewById(R.id.SMS_setting);
+        SMS_setting.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), SmsMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
+
 
 
     }

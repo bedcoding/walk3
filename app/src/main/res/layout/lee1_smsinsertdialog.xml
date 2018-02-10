@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="200dp"
+    android:background="@color/colorBackground">
+
+    <TextView
+        android:id="@+id/dialog_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="46dp"
+        android:text="등록한 번호로 위급 상황 알람메시지가 발송됩니다. (요금 본인 부담, 사용자의 메시지를 사용합니다.)" />
+
+    <Button
+        android:id="@+id/dialog_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/dialog_cancel"
+        android:layout_alignBottom="@+id/dialog_cancel"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="43dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="등록"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/dialog_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="38dp"
+        android:layout_toRightOf="@+id/dialog_reg"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffff"
+        android:text="취소" />
+
+
+</RelativeLayout>

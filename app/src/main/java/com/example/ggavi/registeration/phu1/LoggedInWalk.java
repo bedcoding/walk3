@@ -456,13 +456,17 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                                 try {
                                     JSONObject jsonResponse = new JSONObject(response);
                                     boolean success = jsonResponse.getBoolean("success");
-
-
+/*
+                                    // 푸푸씨가 보기 싫다고 지우라고 해서 지움
                                     if (success) {
                                          Toast.makeText(LoggedInWalk.this, "success", Toast.LENGTH_LONG).show();
-                                    } else {
+                                    }
+
+                                    else {
                                         Toast.makeText(LoggedInWalk.this, "failed", Toast.LENGTH_LONG).show();
                                     }
+*/
+
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
