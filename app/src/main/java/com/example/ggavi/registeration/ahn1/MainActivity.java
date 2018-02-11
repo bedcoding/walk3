@@ -29,6 +29,9 @@ import android.widget.Toast;
 
 
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
+import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
+import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
 import com.example.ggavi.registeration.phu1.FirstActivity;
 import com.example.ggavi.registeration.phu1.LoggedInRecord;
 import com.example.ggavi.registeration.phu1.LoggedInWalk;
@@ -311,28 +314,52 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toast.makeText(this, "뒤로가기 버튼을 한 번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         lastTimeBackPressed = System.currentTimeMillis();
     }
-//
-//    //adding the menu on tool bar (액션바에서 메뉴 추가)
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.main_activity_menu, menu);
-//        return true;
-//    }
-//
-//    //adding actions that will be done on clicking menu items (메뉴 아이템들을 클릭할 때 발생할 이벤트 추가)
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//
-//        switch (item.getItemId()) {
-//            case R.id.logout:
-//                logout();
-//                return true;
-//            default:
-//                return true;
-//        }
-//    }
 
+
+
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        // 로그아웃 버튼
+        if (id == R.id.navLogout) {
+            logout();
+        }
+
+        // 나의 기록 버튼
+        else if(id==R.id.navMyRecord) {
+            myRecord();
+        }
+
+        // 설정 버튼
+        else if(id==R.id.navSetting) {
+            settingAct();
+        }
+
+        // 추천 코스 위치
+        else if(id==R.id.nav_open2_Maps) {
+            open2_Maps();
+        }
+
+        // 추천 코스 요약
+        else if(id==R.id.nav_open2_Course) {
+            open2_Course();
+        }
+
+        // 코스 상세 설명
+        else if(id==R.id.nav_open2_Place) {
+            open2_Place();
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        item.setChecked(false);
+        return true;
+    }
+
+    // 로그아웃 버튼
     public void logout() {
         final Dialog dialog = new Dialog(MainActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //for title bars not to be appeared (타이틀 바 안보이게)
@@ -372,38 +399,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 dialog.dismiss();
             }
         });
-
     }
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.navLogout) {
-            logout();
-            //Toast.makeText(MainActivity.this,"aaa",Toast.LENGTH_LONG).show();
-        }else if(id==R.id.navMyRecord){
-            myRecord();
-        }else if(id==R.id.navSetting){
-            settingAct();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        item.setChecked(false);
-        return true;
-    }
-
-    public void myRecord(){
+    // 나의 기록 버튼
+    public void myRecord() {
         Intent intent = new Intent(MainActivity.this, LoggedInRecord.class);
         intent.putExtra("userID",userID);
         startActivity(intent);
     }
 
-    public void settingAct(){
+    // 설정 버튼
+    public void settingAct() {
         Intent intent = new Intent(MainActivity.this, SettingActivity.class);
         startActivity(intent);
     }
 
+    // 추천 코스 위치
+    public void open2_Maps() {
+        Intent intent = new Intent(MainActivity.this, open2_MapsActivity.class);
+        startActivity(intent);
+    }
+
+    // 추천 코스 요약
+    public void open2_Course() {
+        Intent intent = new Intent(MainActivity.this, open2_CourseActivity.class);
+        startActivity(intent);
+    }
+
+    // 코스 상세 설명
+    public void open2_Place() {
+        Intent intent = new Intent(MainActivity.this, open2_PlaceActivity.class);
+        startActivity(intent);
+    }
 }

@@ -475,7 +475,7 @@ public class WeatherFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("생활기상");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("바깥 정보");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setElevation(0);
         key = getResources().getString(R.string.key2);
         queryUrlUltra = "http://newsky2.kma.go.kr/iros/RetrieveLifeIndexService2/getUltrvLifeList?serviceKey="   //자외선지수

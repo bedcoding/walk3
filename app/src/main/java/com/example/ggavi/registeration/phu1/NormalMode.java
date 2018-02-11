@@ -38,7 +38,6 @@ import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
-import com.example.ggavi.registeration.ahn3.open2_MainActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -230,10 +229,6 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                 plus_weather();
                 return true;
 
-            // 3번째 버튼: 추천 코스
-            case R.id.plus_course:
-                plus_course();
-
             default:
                 return true;
         }
@@ -286,13 +281,6 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     // 2번째 버튼 (날씨/대기정보)
     public void plus_weather() {
         Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
-        startActivity(intent);
-    }
-
-
-    // 3번째 버튼 (추천 코스)
-    public void plus_course() {
-        Intent intent = new Intent(getApplicationContext(), open2_MainActivity.class);
         startActivity(intent);
     }
 

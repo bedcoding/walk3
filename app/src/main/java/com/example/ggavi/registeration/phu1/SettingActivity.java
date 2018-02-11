@@ -24,6 +24,7 @@ public class SettingActivity extends AppCompatActivity {
     private TextView SMS_setting;
     private TextView BlueTooth;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,11 +71,6 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
 
     @Override
