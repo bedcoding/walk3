@@ -102,6 +102,10 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        // 상단 액션바(타이틀 바) 없애려고 넣음
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal_mode);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
