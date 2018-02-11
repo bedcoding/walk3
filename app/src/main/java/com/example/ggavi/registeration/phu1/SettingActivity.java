@@ -20,10 +20,9 @@ import com.example.ggavi.registeration.lee1.SmsMainActivity;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private TextView loggedInWeightSetting;
-    private TextView SMS_setting;
-    private TextView BlueTooth;
-
+    private Button loggedInWeightSetting;
+    private Button SMS_setting;
+    private Button BlueTooth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         // 첫번째 버튼: 몸무게 설정
-        loggedInWeightSetting=(TextView)findViewById(R.id.loggedInWeightSetting);
+        loggedInWeightSetting=(Button)findViewById(R.id.loggedInWeightSetting);
         loggedInWeightSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,7 +49,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         // 두번째 버튼: 전송할 전화번호 설정
-        BlueTooth=(TextView)findViewById(R.id.Bluetooth);
+        BlueTooth=(Button)findViewById(R.id.BlueTooth);
         BlueTooth.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -62,7 +61,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         // 세번째 버튼: 심박수 블루투스 연결
-        SMS_setting=(TextView)findViewById(R.id.SMS_setting);
+        SMS_setting=(Button)findViewById(R.id.SMS_setting);
         SMS_setting.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -71,6 +70,11 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
+
     }
 
     @Override
@@ -120,5 +124,4 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
     }
-
 }
