@@ -32,8 +32,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:background="#6edbf0"
+            android:background="#691A99"
             android:gravity="center">
+
             <!--steps-->
             <TextView
                 android:id="@+id/steps"
@@ -97,7 +98,7 @@
             android:padding="3dp"
             android:text="00:00:000"
             android:textColor="#ffffff"
-            android:background="#0092ed"
+            android:background="#691A99"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -106,7 +107,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:background="#E889BC">
+            android:background="#9B26AF">
 
             <ImageView
                 android:id="@+id/heartPic"
