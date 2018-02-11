@@ -5,11 +5,9 @@
         <shape>
             <gradient
                 android:endColor="#fff"
-                android:startColor="@color/colorPrimary"
+                android:startColor="#6eff94"
                 android:useLevel="true" />
-
         </shape>
     </item>
-
 
 </layer-list>

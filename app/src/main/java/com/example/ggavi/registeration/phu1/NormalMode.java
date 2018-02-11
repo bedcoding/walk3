@@ -38,6 +38,9 @@ import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
+import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
+import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
+import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -226,14 +229,32 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
 
             // 2번째 버튼: 바깥 환경
             case R.id.plus_weather:
-                plus_weather();
+                Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            // 3번째 버튼
+            case R.id.open2_Maps:
+                Intent intent2 = new Intent(getApplicationContext(), open2_MapsActivity.class);
+                startActivity(intent2);
+                return true;
+
+            // 4번째 버튼
+            case R.id.open2_Course:
+                Intent intent3 = new Intent(getApplicationContext(), open2_CourseActivity.class);
+                startActivity(intent3);
+                return true;
+
+            // 5번째 버튼
+            case R.id.open2_Place:
+                Intent intent4 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
+                startActivity(intent4);
                 return true;
 
             default:
                 return true;
         }
     }
-
 
 
     // 1번째 버튼
@@ -278,13 +299,6 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     }
 
 
-    // 2번째 버튼 (날씨/대기정보)
-    public void plus_weather() {
-        Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
-        startActivity(intent);
-    }
-
-
     @Override
     public void onMapReady(GoogleMap googleMap) { //when Map is ready(Map이 ready되어 있는 상태)
         mMap = googleMap;
@@ -295,9 +309,9 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
             public void onClick(View view) {
 
                 if (!isTracking) {
-                    trackingButton.setText("STOP ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.standing_man, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.rounded_button1);
+                    trackingButton.setText(" STOP ");
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.track_button_border_two);
                     isTracking = true; //tracking started (트래킹시작)
 
                     //setting system time as start time (시스템의 시간을 가져와 startTime로 설정
@@ -317,7 +331,7 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                             mMap.setMyLocationEnabled(true);
                         } else {
                             checkLocationPermission();
-                           // mMap.setMyLocationEnabled(true);
+                            // mMap.setMyLocationEnabled(true);
                         }
 
                         mLocationRequest = new LocationRequest();
@@ -338,9 +352,9 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                         }
                     }
                 } else {
-                    trackingButton.setText("START ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.walking_man, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.rounded_button2);
+                    trackingButton.setText(" START ");
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.go, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.track_button_border);
                     isTracking = false; //tracking stopped (트래킹 멈춤)
 
                     if (mGoogleApiClient != null) {
@@ -630,7 +644,7 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
         }else{
             weightInKm = Double.parseDouble(savedNormalWeight);
             if(SavedSharedPreference.getNormalModeWeightType(NormalMode.this).trim().equals("lbs")){
-               weightInKm = weightInKm * 0.453592;
+                weightInKm = weightInKm * 0.453592;
             }
             if(weightInKm<=52){
                 calorieRate =31.25;
@@ -673,4 +687,3 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     }
 
 }
-

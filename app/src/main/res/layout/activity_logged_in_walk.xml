@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/first_grad"
+    android:background="@color/colorBackground"
     tools:context="com.example.ggavi.registeration.phu1.NormalMode">
 
 
@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
 
         <!--Button to start/stop tracking-->
         <Button
@@ -21,125 +22,94 @@
             android:layout_gravity="center"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/rounded_button4"
-            android:drawableLeft="@drawable/walking_man"
-            android:text="START  "
-            android:textColor="#77547a"
+            android:padding="5dp"
+            android:background="@drawable/track_button_border"
+            android:drawableLeft="@drawable/go"
+            android:text=" START  "
+            android:textColor="@color/colorAccent"
             android:textSize="20dp" />
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:stretchColumns="*"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="horizontal"
+            android:background="#ce6eff"
+            android:gravity="center">
+            <!--steps-->
+            <TextView
+                android:id="@+id/stepsL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="steps"
+                android:textColor="#fddeff"
+                android:textSize="13dp"
+                android:layout_marginRight="15dp"/>
 
-            <TableRow>
+            <!-- distance-->
+            <TextView
+                android:id="@+id/distanceL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="0.000"
+                android:textColor="#ffffff"
+                android:textSize="18dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="km"
+                android:textColor="#fddeff"
+                android:textSize="13dp"
+                android:layout_marginRight="15dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="pedometer"
-                    android:textColor="#000000"
-                    android:textSize="13dp"
-                    android:textStyle="italic" />
+            <!-- calorie -->
+            <TextView
+                android:id="@+id/calL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="0.00"
+                android:textColor="#ffffff"
+                android:textSize="18dp"/>
 
-                <TextView
-                    android:id="@+id/stepsL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="0"
-                    android:textColor="#77547a"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="calories"
+                android:textColor="#fddeff"
+                android:textSize="13dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="distance(km)"
-                    android:textColor="#000000"
-                    android:textSize="13dp"
-                    android:textStyle="italic" />
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/distanceL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="0.000"
-                    android:textColor="#77547a"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="calories"
-                    android:textColor="#000000"
-                    android:textSize="13dp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/calL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="0.00"
-                    android:textColor="#77547a"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="time"
-                    android:textColor="#000000"
-                    android:textSize="13dp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/timeL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_two"
-                    android:gravity="center"
-                    android:padding="3dp"
-                    android:text="00:00:000"
-                    android:textColor="#77547a"
-                    android:textSize="13dp"
-                    android:textStyle="bold" />
-            </TableRow>
-
-
-        </TableLayout>
+        <!-- time-->
+        <TextView
+            android:id="@+id/timeL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="00:00:000"
+            android:textColor="#ffffff"
+            android:background="@color/colorWarning"
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:background="#FFADC5">
 
             <ImageView
                 android:id="@+id/heartPicL"
@@ -155,7 +125,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
                 android:text="111"
-                android:textColor="#77547a"
+                android:textColor="#ffffff"
                 android:textSize="20dp" />
         </LinearLayout>
 
@@ -165,15 +135,15 @@
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
             android:gravity="center"
-            android:orientation="horizontal"
             android:visibility="gone"
+            android:orientation="horizontal"
             tools:ignore="InvalidId">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="목표 달성률: "
-                android:textColor="#77547a"
+                android:textColor="@color/colorAccent"
                 android:textSize="13dp"
                 android:textStyle="bold" />
 
@@ -192,44 +162,29 @@
                 android:id="@+id/achievementPercentage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWarning"
-                android:padding="2dp"
+                android:layout_marginLeft="5dp"
                 android:text="0"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+                android:textColor="@color/colorWarning"
+                android:textSize="15dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="2dp"
                 android:text="%"
-                android:textColor="#ffffff"
-                android:background="@color/colorWarning"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
+                android:textColor="@color/colorWarning"
+                android:textSize="13dp"/>
         </LinearLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#d100a9" />
 
         <fragment
             android:id="@+id/mapL"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerHorizontal="true"
             android:layout_weight="2"
-            android:background="@drawable/border_bottom"
+            android:layout_margin="5dp"
             android:clickable="true"
             android:enabled="true" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#d100a9" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

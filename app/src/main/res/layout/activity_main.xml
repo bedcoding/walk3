@@ -95,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="공지사항"
+                android:text="걷기 시작"
                 android:textColor="#ffffff"
                 android:textSize="25dp"
                 android:textStyle="bold"

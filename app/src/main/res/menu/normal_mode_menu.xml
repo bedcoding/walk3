@@ -6,7 +6,16 @@
     <item android:id="@+id/plus_weather"
         android:title= "바깥 환경"/>
 
-    <item android:id="@+id/plus_course"
-        android:title= "추천 코스"/>
+    <item
+        android:id="@+id/open2_Maps"
+        android:title="추천 코스 위치" />
+
+    <item
+        android:id="@+id/open2_Course"
+        android:title="추천 코스 요약" />
+
+    <item
+        android:id="@+id/open2_Place"
+        android:title="코스 상세 설명" />
 
 </menu>

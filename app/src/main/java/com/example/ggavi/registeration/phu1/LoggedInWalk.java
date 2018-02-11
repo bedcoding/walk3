@@ -118,6 +118,10 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // 상단 액션바(타이틀 바) 없애려고 넣음
+        getSupportActionBar().hide();
+
         setContentView(R.layout.activity_logged_in_walk);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -231,43 +235,6 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
-
-    //adding the menu on tool bar (액션바에서 메뉴 추가)
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.normal_mode_menu, menu);
-        return true;
-    }
-
-    // adding actions that will be done on clicking menu items
-    // (메뉴 아이템들을 클릭할 때 발생할 이벤트 추가)
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        switch (item.getItemId()) {
-
-            // 3번째 버튼: 날씨/대기정보
-            case R.id.plus_weather:
-                plus_weather();
-                return true;
-
-            default:
-                return true;
-        }
-    }
-
-
-    // 2번째 버튼 안넣음
-    // ㅠㅠ
-
-    // 3번째 버튼 (날씨/대기정보)
-    public void plus_weather() {
-        Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) { //when Map is ready(Map이 ready되어 있는 상태)
         mMap = googleMap;
@@ -313,9 +280,9 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
                         @Override
                         public void onDismiss(final DialogInterface arg0) {
                             // do something
-                            trackingButton.setText("STOP ");
-                            trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.standing_man, 0, 0, 0);
-                            trackingButton.setBackgroundResource(R.drawable.rounded_button1);
+                            trackingButton.setText(" STOP ");
+                            trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop, 0, 0, 0);
+                            trackingButton.setBackgroundResource(R.drawable.track_button_border_two);
                             isTracking = true; //tracking started (트래킹시작)
 
                             if (isGoalEntered) {
@@ -400,9 +367,9 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                         }
                     });
                 } else {
-                    trackingButton.setText("START ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.walking_man, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.rounded_button2);
+                    trackingButton.setText(" START ");
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.go, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.track_button_border);
                     isTracking = false; //tracking stopped (트래킹 멈춤)
                     achievementLayout.setVisibility(View.GONE);
                     if (mGoogleApiClient != null) {
