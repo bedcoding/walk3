@@ -5,6 +5,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.view.Menu;
@@ -37,10 +38,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
 import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
 import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
+import com.example.ggavi.registeration.lee2.bluegetheart;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -100,11 +103,13 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     int seconds, minutes, milliSeconds;
     Handler handler;
 
+
+    // 심박수 버튼 추가
+    private FloatingActionButton fab2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // 상단 액션바(타이틀 바) 없애려고 넣음
-        getSupportActionBar().hide();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal_mode);
@@ -208,7 +213,22 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                     .findFragmentById(R.id.map);
             mapFragment.getMapAsync(NormalMode.this);
         }
+
+        // (심박수 버튼 추가) Floating Action Button 적용
+        fab2 = (FloatingActionButton) findViewById(R.id.fab_normal_walk);
+
+        // 이벤트 적용
+        fab2.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), bluegetheart.class);
+                startActivity(intent);
+            }
+        });
     }
+
+
 
 
     //adding the menu on tool bar (액션바에서 메뉴 추가)

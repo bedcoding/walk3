@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.provider.MediaStore;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Log;
@@ -46,6 +47,8 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
+import com.example.ggavi.registeration.lee1.SmsMainActivity;
+import com.example.ggavi.registeration.lee2.bluegetheart;
 import com.example.ggavi.registeration.phu1.FirstActivity;
 import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.google.android.gms.common.ConnectionResult;
@@ -114,6 +117,10 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
     private double goal = 0;
     private TextView achievementPercentage;
     private ProgressBar progressBar;
+
+
+    // 심박수 버튼 추가
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,17 +229,30 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
                     Intent intent = new Intent(LoggedInWalk.this, MainActivity.class);
                     intent.putExtra("userID", userID);
                     startActivity(intent); //force back to first activity
-
                 }
             });
 
 
         } else {
-
             SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.mapL);
             mapFragment.getMapAsync(LoggedInWalk.this);
         }
+
+
+
+        // (심박수 버튼 추가) Floating Action Button 적용
+        fab = (FloatingActionButton) findViewById(R.id.fab_login_walk);
+
+        // 이벤트 적용
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), bluegetheart.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

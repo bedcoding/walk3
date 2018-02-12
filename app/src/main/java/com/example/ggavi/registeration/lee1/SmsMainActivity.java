@@ -45,7 +45,7 @@ public class SmsMainActivity extends AppCompatActivity {
     private SmsNumberAdapter adapter;//
     private List<SmsNumber> smsNumberList;
 
-   //sms등록 할떄 묻는 다이얼로그들
+    //sms등록 할떄 묻는 다이얼로그들
     private Dialog smsInsertDialog;
     private Button dialog_reg;
     private Button dialog_cancel;
@@ -54,11 +54,13 @@ public class SmsMainActivity extends AppCompatActivity {
     //등록시에 안뜨는걸 해결하려고 텍스트로 목록 보이게 하기
     private String smsNum1pass;
     private String numNamepass;
+    private String smsTextpass;
     private TextView LsmsNum1;
     private TextView LnumsName;
+    private TextView LsmsText;
+    private String smstextdef;   //"발송자의 심박수가 너무 높습니다. ";
     private boolean numAddFlag = false;//등록시와 그냥 화면에 뿌려줄 떄를 구분해서 등록시에는 에디트텍스트에 입력한 값을 받아서 싱크타스크에서 리스트에 추가한
 //그냥 화면에 뿌려줄 떄는 그냥 통신해서 받아온 값을 사용한다.
-
 
 
     @Override
@@ -66,14 +68,14 @@ public class SmsMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lee1_activity_smsmain);
 
-        smsNumberViewList=(ListView)findViewById(R.id.smsNumberViewList);
+        smsNumberViewList = (ListView) findViewById(R.id.smsNumberViewList);
         smsNumberList = new ArrayList<SmsNumber>();
 
-        userIDtext=(TextView)findViewById(R.id.userIDtext);
-        userIDtext.setText(userID+"님이 등록한 비상연락처");  //알림 글
+        userIDtext = (TextView) findViewById(R.id.userIDtext);
+        userIDtext.setText(userID + "님이 등록한 비상연럭처");  //알림 글 리스트뷰 위에 아이디의 보호자 연락처임을 표시
 
         //adapter는 해당 List를 매칭 (각각 차례대로 매칭)
-        adapter = new SmsNumberAdapter(getApplicationContext(),smsNumberList);
+        adapter = new SmsNumberAdapter(getApplicationContext(), smsNumberList);
         smsNumberViewList.setAdapter(adapter);
 
         ((Button) findViewById(R.id.click)).setOnClickListener(new View.OnClickListener() {
@@ -93,10 +95,7 @@ public class SmsMainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         numAddFlag=true; //실행시 트루
 
-                       //첫등록시 화면에 띄워주기 위해서
-
-
-
+                        //첫등록시 화면에 띄워주기 위해서
                         //System.out.println(smsNum1pass);
                        /* LsmsNum1=(TextView)findViewById(R.id.LsmsNum1);
                         LnumsName=(TextView)findViewById(R.id.LnumsName) ;
@@ -136,15 +135,17 @@ public class SmsMainActivity extends AppCompatActivity {
 
                         // 실질적으로 접속할 수 있도록 생성자를 통해 객체를 만든다. (유저 ID, responseListener)
                         // ValidateRequest.java라는 파일을 만들어야 한다.
-                        smsDB_Manager smsRequest = new smsDB_Manager(userID, ((EditText) findViewById(R.id.smsNum1)).getText().toString(), ((EditText) findViewById(R.id.numsName)).getText().toString(), responseListener);
+                        smsDB_Manager smsRequest = new smsDB_Manager(userID, ((EditText) findViewById(R.id.smsNum1)).getText().toString(), ((EditText) findViewById(R.id.numsName)).getText().toString(),((EditText) findViewById(R.id.smsText)).getText().toString(), responseListener);
                         RequestQueue queue = Volley.newRequestQueue(SmsMainActivity.this);
                         queue.add(smsRequest);  //준비된 데이터를 받아 통신을 시작한다.
                         queue.start();
 
 
-                        smsNum1pass=  ((EditText) findViewById(R.id.smsNum1)).getText().toString();
+                        /*smsNum1pass=  ((EditText) findViewById(R.id.smsNum1)).getText().toString();
                         numNamepass= ((EditText) findViewById(R.id.numsName)).getText().toString();
-                            System.out.println("타스크 실행전"+numAddFlag);
+                        smsTextpass= ((EditText) findViewById(R.id.smsText)).getText().toString();*/
+
+                        System.out.println("타스크 실행전"+numAddFlag);
 
                         runOnUiThread(new Runnable(){
                             @Override
@@ -159,10 +160,6 @@ public class SmsMainActivity extends AppCompatActivity {
                         new BackgroundTask().execute();//등록 버튼을 누르면 리스트 스레드를 돌려서 리스트를 만들어줌.
 
                         Toast.makeText(getApplicationContext(),"등록되었습니다.",Toast.LENGTH_SHORT).show();
-
-
-
-
 
                         numAddFlag=false;
                         System.out.println("타스크 실행후"+numAddFlag);
@@ -186,17 +183,14 @@ public class SmsMainActivity extends AppCompatActivity {
                     }
                 });
 
-
                 //다이얼로그 화면에 보여주기
                 smsInsertDialog.show();
-
             }
-                                    }
-        );
+        });
+
 
         new BackgroundTask().execute();
     }
-
 
 
     class BackgroundTask extends AsyncTask<Void, Void, String> {
@@ -207,12 +201,14 @@ public class SmsMainActivity extends AppCompatActivity {
 
         @Override
         protected void onPreExecute() {
-            target = "http://ggavi2000.cafe24.com/smsList.php?userID="+ userID;  //해당 웹 서버에 접속
+            target = "http://ggavi2000.cafe24.com/smsList.php?userID=" + userID;  //해당 웹 서버에 접속
 
             // (로딩창 띄우기 작업 3/2)
             dialog.setMessage("로딩중");
             dialog.show();
-        }  @Override
+        }
+
+        @Override
         protected String doInBackground(Void... voids) {
             try {
 
@@ -247,6 +243,7 @@ public class SmsMainActivity extends AppCompatActivity {
 
             return null;
         }
+
         @Override
         public void onProgressUpdate(Void... values) {
             super.onProgressUpdate();
@@ -262,8 +259,8 @@ public class SmsMainActivity extends AppCompatActivity {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");  //아까 변수 이름
 
                 int count = 0;
-                String userID="",numsName="";
-                String smsNum1="";
+                String userID = "", numsName = "";
+                String smsNum1 = "", smsText = "";
                 while (count < jsonArray.length()) {
                     // 현재 배열의 원소값을 저장
                     JSONObject object = jsonArray.getJSONObject(count);
@@ -271,22 +268,23 @@ public class SmsMainActivity extends AppCompatActivity {
                     // 공지사항의 Content, Name, Date에 해당하는 값을 가져와라는 뜻
                     System.out.println(numAddFlag);
 
-                    if(numAddFlag==false) {
+                    if (numAddFlag == false) {
                         userID = object.getString("userID");
                         smsNum1 = object.getString("smsNum1");
                         numsName = object.getString("numsName");
-                    }else if(numAddFlag==true){
-                        userID= SmsMainActivity.userID;
-                        smsNum1= smsNum1pass;
-                        numsName=  numNamepass;
-
+                        smsText = object.getString("smsText");
+                    } else if (numAddFlag == true) {
+                        userID = SmsMainActivity.userID;
+                        smsNum1 = smsNum1pass;
+                        numsName = numNamepass;
+                        smsText = smsTextpass;
                     }
 
 
-                        // 하나의 공지사항에 대한 객체를 만들어줌
-                        SmsNumber smsNumber = new SmsNumber(userID, smsNum1, numsName);
+                    // 하나의 공지사항에 대한 객체를 만들어줌
+                    SmsNumber smsNumber = new SmsNumber(userID, smsNum1, numsName, smsText);
 
-                   // smsNumCountCheck=smsNum1;
+                    // smsNumCountCheck=smsNum1;
                     //리스트에 추가해줌
                     smsNumberList.add(smsNumber);
                     adapter.notifyDataSetChanged();

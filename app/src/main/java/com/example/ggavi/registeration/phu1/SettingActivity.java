@@ -48,7 +48,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
 
-        // 두번째 버튼: 전송할 전화번호 설정
+        // 두번째 버튼: 심박수 블루투스 연결
         BlueTooth=(Button)findViewById(R.id.BlueTooth);
         BlueTooth.setOnClickListener(new View.OnClickListener() {
 
@@ -60,7 +60,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
 
-        // 세번째 버튼: 심박수 블루투스 연결
+        // 세번째 버튼: 전송할 전화번호 설정
         SMS_setting=(Button)findViewById(R.id.SMS_setting);
         SMS_setting.setOnClickListener(new View.OnClickListener() {
 

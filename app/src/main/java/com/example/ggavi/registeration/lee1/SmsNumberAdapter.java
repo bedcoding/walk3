@@ -24,14 +24,15 @@ import java.util.List;
 // SmsDeleteRequest을 사용해서 통신.
 
 public class SmsNumberAdapter extends BaseAdapter{
-   private View v;
-   private String userID ="a";
-   private TextView numsName;
-   private TextView smsNum1;
+    private View v;
+    private String userID ="a";//메인에서 값 받아와야 한다.
+    private TextView numsName;
+    private TextView smsNum1;
+    private TextView smsText;
     private Context context;
     private List<SmsNumber> smsNumberList; //넘버가 들어갈 리스트를 만들어줌.
     Response.Listener<String> responseListener;
-private int ii;
+    private int ii;
     public SmsNumberAdapter(Context context, List<SmsNumber> smsNumberList){
         this.context=context;
         this.smsNumberList = smsNumberList;
@@ -55,17 +56,18 @@ private int ii;
     @Override
     public View getView(int i, View convertView, ViewGroup Parent)//i는 position
     {// 하나의 View로 만들어 줄 수 있도록 한다. (R.layout.notice로 배달)
-       v = View.inflate(context, R.layout.lee1_activity_sms_number, null);
+        v = View.inflate(context, R.layout.lee1_activity_sms_number, null);
         numsName = (TextView) v.findViewById(R.id.numsName);//등록할 번호의 주인이름
-       smsNum1 = (TextView) v.findViewById(R.id.smsNum1);//등록 번호
-
-        ii=i;
+        smsNum1 = (TextView) v.findViewById(R.id.smsNum1);//등록 번호
+        smsText=(TextView)v.findViewById(R.id.smsText);//등록할 메세지
+        ii=i;//i가 전역 변수 선언하지 않아 발생하는 에러 떄문에 ii를 만들어 i값을 사용하기 위한 부분. 배열에서 사용
         // noticeText를 현재 리스트에 있는 값으로 넣어줄 수 있도록 한다.
         numsName.setText(smsNumberList.get(i).getNumsName());
         smsNum1.setText(smsNumberList.get(i).getSmsNum1());
+        smsText.setText(smsNumberList.get(i).getSmsText());
         v.setTag(smsNumberList.get(i).getNumsName());
         v.setTag(smsNumberList.get(i).getSmsNum1());
-
+        v.setTag(smsNumberList.get(i).getSmsText());
         Button deleteButton = v.findViewById(R.id.deletebtn);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,15 +90,15 @@ private int ii;
 
                                 // 삭제한 만큼 학점도 빼준다.
                                 //StatisticsFragment.totalCredit -= courseList.get(i).getCourseCredit();
-                               // StatisticsFragment.credit.setText(StatisticsFragment.totalCredit + "개");
-                               // smsNumberList.remove(i);    // 리스트에서 삭제
-                               // notifyDataSetChanged();  // 바뀐걸 적용
+                                // StatisticsFragment.credit.setText(StatisticsFragment.totalCredit + "개");
+                                // smsNumberList.remove(i);    // 리스트에서 삭제
+                                // notifyDataSetChanged();  // 바뀐걸 적용
                             }
 
                             // 삭제 실패
                             //else {
-                               // new CustomConfirmDialog().showConfirmDialog(parent.getActivity(),"삭제를 실패하였습니다.",true);
-                           // }
+                            // new CustomConfirmDialog().showConfirmDialog(parent.getActivity(),"삭제를 실패하였습니다.",true);
+                            // }
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -104,8 +106,8 @@ private int ii;
                     }
                 };
 
-               // SmsDeleteRequest smsDeleteRequest = new SmsDeleteRequest(userID, smsNumberList.get(ii).getSmsNum1() + "", responseListener);  // + ""를 붙이면 문자열 형태로 바꿈
-                SmsDeleteRequest smsDeleteRequest= new SmsDeleteRequest(userID, smsNumberList.get(ii).getSmsNum1(),smsNumberList.get(ii).getNumsName(),responseListener);
+                // SmsDeleteRequest smsDeleteRequest = new SmsDeleteRequest(userID, smsNumberList.get(ii).getSmsNum1() + "", responseListener);  // + ""를 붙이면 문자열 형태로 바꿈
+                SmsDeleteRequest smsDeleteRequest= new SmsDeleteRequest(userID, smsNumberList.get(ii).getSmsNum1(),smsNumberList.get(ii).getNumsName(),smsNumberList.get(ii).getSmsText(),responseListener);
                 RequestQueue queue;
                 queue = Volley.newRequestQueue(context);//(SmsNumberAdapter.this);
                 queue.add(smsDeleteRequest);
@@ -119,8 +121,5 @@ private int ii;
         // 버튼 이벤트까지 마친 뒤 정상적으로 return 한다.
 
         return v;
-
     }
-
 }
-

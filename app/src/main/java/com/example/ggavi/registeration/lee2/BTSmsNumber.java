@@ -10,6 +10,9 @@ public class BTSmsNumber {
     }
 
     private String numsName;
+    private String userID;
+    private String smsNum1;
+    private String smsText;
 
     public String getNumsName() {
         return numsName;
@@ -19,7 +22,7 @@ public class BTSmsNumber {
         this.numsName = numsName;
     }
 
-    private String userID;
+
 
     public String getUserID() {
         return userID;
@@ -29,12 +32,23 @@ public class BTSmsNumber {
         return smsNum1;
     }
 
-    private String smsNum1;
 
-    public BTSmsNumber(String userID, String smsNum1, String numsName){
+
+    public String getSmsText() {
+        return smsText;
+    }
+
+    public void setSmsText(String smsText) {
+        this.smsText = smsText;
+    }
+
+
+
+    public BTSmsNumber(String userID, String smsNum1, String numsName,String smsText){
         this.userID = userID;
         this.smsNum1 = smsNum1;
         this.numsName = numsName;
+        this.smsNum1 = smsText;
     }
 
 }

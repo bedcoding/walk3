@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ggavi.registeration.lee1.SmsMainActivity">
+    tools:context="com.example.user.myapplication.SmsMainActivity">
 
 
     <LinearLayout
@@ -32,6 +32,12 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:hint="연락할 번호를 -없이 입력하세요."/>
+
+        <EditText
+            android:id="@+id/smsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="전송하고 싶은 메세지를 입력하세요. 입력값이 없으면 기본 경고문이 전송됩니다." />
 
         <Button
             android:id="@+id/click"

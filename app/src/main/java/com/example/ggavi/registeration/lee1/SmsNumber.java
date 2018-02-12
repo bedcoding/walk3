@@ -20,7 +20,17 @@ public class SmsNumber{
 
     String numsName;
     String userID;
+    String smsNum1;
 
+    public String getSmsText() {
+        return smsText;
+    }
+
+    public void setSmsText(String smsText) {
+        this.smsText = smsText;
+    }
+
+    String smsText;
     public String getUserID() {
         return userID;
     }
@@ -29,12 +39,10 @@ public class SmsNumber{
         return smsNum1;
     }
 
-    String smsNum1;
-
-   public SmsNumber(String userID, String smsNum1, String numsName){
-       this.userID = userID;
-       this.smsNum1 = smsNum1;
-       this.numsName = numsName;
-
-   }
+    public SmsNumber(String userID, String smsNum1, String numsName, String smsText){
+        this.userID = userID;
+        this.smsNum1 = smsNum1;
+        this.numsName = numsName;
+        this.smsText=smsText;
+    }
 }

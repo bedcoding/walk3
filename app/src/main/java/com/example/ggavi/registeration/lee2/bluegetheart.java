@@ -41,7 +41,7 @@ public class bluegetheart extends AppCompatActivity {
     private List<BTSmsNumber> smsNumberList;
     private String userID="a"; //연결하면 메인액티비티에서 아이디를 받아와야함.
     BTSmsNumber smsNumber;
-private int alertcount=0;
+    private int alertcount=0;
     static final int REQUEST_ENABLE_BT = 10;
     BluetoothAdapter mBluetoothAdapter;
     int mPairedDeviceCount = 0;
@@ -57,35 +57,35 @@ private int alertcount=0;
     byte[] readBuffer;
     int readBufferPosition;
 
-    private String PHnum;
-    private String PHtext="심장에 무리가 갈 수 있는 수치입니다.";
+    private String PHnum;//폰번호를 받아오는 사이트
+    private String PHtext;
     EditText mEditReceive, mEditSend;
 
     public bluegetheart(){
-    new BackgroundTask().execute();
+        new BackgroundTask().execute();
 
 
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.lee2_activity_bluegetheart);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.lee2_activity_bluegetheart);
 
 
         mEditReceive = (EditText)findViewById(R.id.receiveText);
         //mEditSend = (EditText)findViewById(R.id.sendText);
-        mp=MediaPlayer.create(this,R.raw.a);
+        mp=MediaPlayer.create(this,R.raw.beepcheck);
 
 
 
-                checkBluetooth();
+        checkBluetooth();
 
     }
 
 
 
 
-     //블루투스가 켜져있는지 지원하는지 확인 활성화 상태로 바꾸기 위한 부분
+    //블ㄹ투스가 켜져있는지 지원하는지 확인 활성화 상태로 바꾸기 위한 부분
     void checkBluetooth(){
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         if(mBluetoothAdapter == null){
@@ -187,9 +187,9 @@ private int alertcount=0;
     BluetoothDevice getDeviceFromBondedList(String name){
         BluetoothDevice selectedDevice = null;
 
-                for (BluetoothDevice device : mDevices) {
-                    if(name.equals(device.getName())){
-                        selectedDevice = device;
+        for (BluetoothDevice device : mDevices) {
+            if(name.equals(device.getName())){
+                selectedDevice = device;
                 break;
             }
         }
@@ -221,21 +221,27 @@ private int alertcount=0;
                                 if(b == mCharDelimiter){
                                     byte[] encodedBytes = new byte[readBufferPosition];
                                     System.arraycopy(readBuffer, 0,
-                                            encodedBytes, 0, encodedBytes.length); //readBuffer의 0번째부터 encodedBytes의 0번쨰이후에 encodeBytes의 길이 만큼 넣는다.
+                                            encodedBytes, 0, encodedBytes.length); //readBuffer의0번쨰부터 encodedBytes의 0번쨰이후에 encodeBytes의 길이 만큼 넣는다.
                                     final String data = new String(encodedBytes, "US-ASCII");
                                     readBufferPosition = 0;
-                                     //System.out.println(data);
-                                     cutbmi=data.substring(1,4);
+                                    //System.out.println(data);
 
-                                     bminum=Integer.parseInt(cutbmi);
-                                    System.out.println(PHnum);
-                                    if(bminum>205 && alertcount<1){
-                                        beeper();
-                                       // sendSMS(PHnum,PHtext);
+                                    cutbmi=data.replace("B","").trim();//B를 공백문자로 바꾸고 그trim으로 공백제거해서 숫자만 구해줌.
+                                    //System.out.println(cutbmi);
+                                    bminum=Integer.parseInt(cutbmi);
+                                    //  System.out.println("폰번호:"+PHnum);
+                                    // System.out.println("문자 내용:"+PHtext);
 
+                                    if(bminum>200&&alertcount<1){
+
+                                        //  System.out.println("문자 메세지를 전송 합니다.");
+                                        //   sendSMS(PHnum,PHtext);
                                         alertcount++;
                                     }
-
+                                    if(bminum>200){
+                                        //System.out.println("비프음이 울림.");
+                                        beeper();
+                                    }
                                     handler.post(new Runnable(){
                                         public void run(){
 
@@ -249,8 +255,8 @@ private int alertcount=0;
                                 }
                                 else{
                                     readBuffer[readBufferPosition++] = b;
-                        }
-                    }
+                                }
+                            }
                         }
                     }
                     catch (IOException ex){
@@ -307,7 +313,7 @@ private int alertcount=0;
 
     class BackgroundTask extends AsyncTask<Void, Void, String> {
         // (로딩창 띄우기 작업 3/1) 로딩창을 띄우기 위해 선언해준다.
-       // ProgressDialog dialog = new ProgressDialog(bluegetheart.this);
+        // ProgressDialog dialog = new ProgressDialog(bluegetheart.this);
 
         String target;  //우리가 접속할 홈페이지 주소가 들어감
 
@@ -316,11 +322,13 @@ private int alertcount=0;
             target = "http://ggavi2000.cafe24.com/smsList.php?userID="+ userID;  //해당 웹 서버에 접속
 
             // (로딩창 띄우기 작업 3/2)
-           // dialog.setMessage("로딩중");
+            // dialog.setMessage("로딩중");
             //dialog.show();
         }  @Override
         protected String doInBackground(Void... voids) {
             try {
+
+
                 // 해당 서버에 접속할 수 있도록 URL을 커넥팅 한다.
                 URL url = new URL(target);
 
@@ -359,8 +367,9 @@ private int alertcount=0;
 
         @Override  //해당 결과를 처리할 수 있는 onPostExecute()
         public void onPostExecute(String result) {
-            System.out.println(result);
+            // System.out.println(result);
             try {
+                //    System.out.println("어싱크타스크가 한번 돌아감");
                 // 해당 결과(result) 응답 부분을 처리
                 JSONObject jsonObject = new JSONObject(result);
 
@@ -368,7 +377,7 @@ private int alertcount=0;
                 JSONArray jsonArray = jsonObject.getJSONArray("response");  //아까 변수 이름
 
                 int count = 0;
-                String userID, smsNum1,numsName;
+                String userID, smsNum1,numsName,smsText;
 
                 while (count < jsonArray.length()) {
                     // 현재 배열의 원소값을 저장
@@ -379,23 +388,29 @@ private int alertcount=0;
                     userID = object.getString("userID");
                     smsNum1 = object.getString("smsNum1");
                     numsName = object.getString("numsName");
+                    smsText = object.getString("smsText");
                     // 하나의 공지사항에 대한 객체를 만들어줌
                     //여기선 별 다른 의미 없음. 넘버를 받아서 전역변수에 저장하고 그 번호를 연락할 번호로 사용할 뿐임.
-                     smsNumber = new BTSmsNumber(userID, smsNum1,numsName );
+                    smsNumber = new BTSmsNumber(userID, smsNum1,numsName,smsText);
 
+                    if(smsText.length()!=0){//smsText가 DB에서 입력 값이 없으면 길이가 0이므로 이떈 미리 정해진 텍스트가 대신 보내진다.
+                        PHtext=smsText;
+                    }else{
+                        PHtext="심장에 무리가 갈 수 있는 수치입니다.";
+                    }
                     //리스트에 추가해줌
-                   // smsNumberList.add(smsNumber);
-                   // adapter.notifyDataSetChanged();
-                   // PHnum=smsNum1;
+                    // smsNumberList.add(smsNumber);
+                    // adapter.notifyDataSetChanged();
+                    // PHnum=smsNum1;
 
-                       // System.out.println(smsNum1+"Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    // System.out.println(smsNum1+"Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
                     PHnum=smsNum1;
                     count++;
                 }
 
                 // (로딩창 띄우기 작업 3/3)
                 // 작업이 끝나면 로딩창을 종료시킨다.
-               // dialog.dismiss();
+                // dialog.dismiss();
             } catch (Exception e) {
                 e.printStackTrace();
             }
