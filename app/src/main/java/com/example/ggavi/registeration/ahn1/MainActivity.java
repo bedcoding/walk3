@@ -24,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //set onclick listener for floating button - it will be connected to activity to walk (floating button onclick 리스너, 이걸 클릭하면 걷는 activity로 넘어가게 만들어야 함)
         FloatingActionButton fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
+
         fabBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this,"floating button onclick",Toast.LENGTH_LONG).show();
@@ -109,6 +111,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
+
+        // 이미지 버튼 추가
+        ImageButton imageBtn = (ImageButton)findViewById(R.id.walk_imageButton);
+        imageBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoggedInWalk.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
         // 공지글 notice 부분
         noticeListView = (ListView) findViewById(R.id.noticeListView);
@@ -125,13 +140,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter = new NoticeListAdapter(getApplicationContext(), noticeList);
         noticeListView.setAdapter(adapter);
 
+        final Button runButton = (Button) findViewById(R.id.run);
         final Button courseButton = (Button) findViewById(R.id.courseButton);
-        final Button scheduleButton = (Button) findViewById(R.id.scheduleButton);
         final Button statisticsButton = (Button) findViewById(R.id.statisticsButton);
         final LinearLayout notice = (LinearLayout) findViewById(R.id.notice);  //해당 Fragment 눌렀을 때 화면의 레이아웃이 바뀌는 부분
 
 
-        // 1. 코스 버튼 (프래그먼트)
+        // 메인 화면일 경우, 첫번째 버튼에 색깔이 들어오게 만든다 (runButton)
+        runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
+        // 1. 걷기시작 화면으로
+        runButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+
+        // 2. 코스 버튼 (프래그먼트)
         courseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,39 +173,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
+                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
                 statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                scheduleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 // fragment 부분을, new CourseFragment 이걸로 대체해주는 것
                 fragmentTransaction.replace(R.id.fragment, new CourseFragment());
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        // 2. 스케쥴 버튼
-        scheduleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 공지사항 부분이 보이지 않도록 하는 부분
-                // 즉 notice 라는 LinearLayout이 사라지고 다른 Fragment가 보일 수 있도록 화면을 바꿔주는 것
-                notice.setVisibility(View.GONE);
-
-
-                // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
-                courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                scheduleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                // fragment 부분을 new ScheduleFragment로 대체해주는 것
-                fragmentTransaction.replace(R.id.fragment, new ScheduleFragment());
                 fragmentTransaction.commit();
             }
         });
@@ -187,11 +195,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // 즉 notice 라는 LinearLayout이 사라지고 다른 Fragment가 보일 수 있도록 화면을 바꿔주는 것
                 notice.setVisibility(View.GONE);
 
-
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
+                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
                 statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                scheduleButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
