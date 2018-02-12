@@ -18,6 +18,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -29,6 +31,7 @@ import android.widget.Toast;
 
 
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
 import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
 import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
@@ -123,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         noticeListView.setAdapter(adapter);
 
         final Button courseButton = (Button) findViewById(R.id.courseButton);
-        final Button statisticsButton = (Button) findViewById(R.id.statisticsButton);
         final Button scheduleButton = (Button) findViewById(R.id.scheduleButton);
+        final Button statisticsButton = (Button) findViewById(R.id.statisticsButton);
         final LinearLayout notice = (LinearLayout) findViewById(R.id.notice);  //해당 Fragment 눌렀을 때 화면의 레이아웃이 바뀌는 부분
 
 
@@ -318,6 +321,59 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
+
+
+    //adding the menu on tool bar (액션바에서 메뉴 추가)
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.login_after_menu, menu);
+        return true;
+    }
+
+    // adding actions that will be done on clicking menu items
+    // (메뉴 아이템들을 클릭할 때 발생할 이벤트 추가)
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            // 1번째 버튼: 바깥 환경
+            case R.id.plus_weather:
+                Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
+                startActivity(intent);
+                return true;
+
+            // 2번째 버튼
+            case R.id.open2_Maps:
+                Intent intent2 = new Intent(getApplicationContext(), open2_MapsActivity.class);
+                startActivity(intent2);
+                return true;
+
+            // 3번째 버튼
+            case R.id.open2_Course:
+                Intent intent3 = new Intent(getApplicationContext(), open2_CourseActivity.class);
+                startActivity(intent3);
+                return true;
+
+            // 4번째 버튼
+            case R.id.open2_Place:
+                Intent intent4 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
+                startActivity(intent4);
+                return true;
+
+            default:
+                return true;
+        }
+    }
+
+
+
+
+
+
+
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
@@ -336,21 +392,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 설정 버튼
         else if(id==R.id.navSetting) {
             settingAct();
-        }
-
-        // 추천 코스 위치
-        else if(id==R.id.nav_open2_Maps) {
-            open2_Maps();
-        }
-
-        // 추천 코스 요약
-        else if(id==R.id.nav_open2_Course) {
-            open2_Course();
-        }
-
-        // 코스 상세 설명
-        else if(id==R.id.nav_open2_Place) {
-            open2_Place();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

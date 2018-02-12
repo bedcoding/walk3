@@ -23,18 +23,6 @@
             android:id="@+id/navHelp"
             android:title="Help" />
 
-        <item
-            android:id="@+id/nav_open2_Maps"
-            android:title="추천 코스 위치" />
-
-        <item
-            android:id="@+id/nav_open2_Course"
-            android:title="추천 코스 요약" />
-
-        <item
-            android:id="@+id/nav_open2_Place"
-            android:title="코스 상세 설명" />
-
     </group>
 
 
