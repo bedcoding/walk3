@@ -8,6 +8,7 @@
     android:orientation="vertical"
     tools:context="com.example.ggavi.registeration.ahn1.MainActivity"
     android:background="@color/colorBackground">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -20,8 +21,6 @@
       android:orientation="horizontal"
       android:layout_marginTop="5dp"
       android:layout_marginRight="5dp">
-
-
 
     <Button
         android:layout_width="match_parent"
@@ -92,9 +91,9 @@
                 android:layout_height="250dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/logo"
                 android:scaleType="centerInside"
-                android:background="@drawable/circle_button" />
+                android:background="@drawable/logo"
+                app:srcCompat="@drawable/image_onclick" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -119,11 +118,10 @@
     </LinearLayout>
 
     <!--통계, 시간표, 목록 중 하나를 선택했을 때 이걸로 화면이 바뀜-->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment">
-    </RelativeLayout>
+      <RelativeLayout
+          android:id="@+id/fragment"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"></RelativeLayout>
   </FrameLayout>
   
 </LinearLayout>
