@@ -68,6 +68,7 @@ public class MosquitoFragment extends Fragment {
         }
     }
 
+/*
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.mosquito_actions, menu);
@@ -84,12 +85,13 @@ public class MosquitoFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("모기예보");
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("모기 정보");
         ((AppCompatActivity)getActivity()).getSupportActionBar().setElevation(0);
         return inflater.inflate(R.layout.open1_fragment_mosquito, container, false);
     }

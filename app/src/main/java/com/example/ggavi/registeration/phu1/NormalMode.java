@@ -40,6 +40,9 @@ import android.widget.TextView;
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
+import com.example.ggavi.registeration.ahn2.open1_Main1;
+import com.example.ggavi.registeration.ahn2.open1_Main2;
+import com.example.ggavi.registeration.ahn2.open1_Main3;
 import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
 import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
@@ -252,20 +255,20 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                 return true;
 
             // 2번째 버튼: 바깥 환경
-            case R.id.plus_weather:
-                Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
+            case R.id.open1_weather:
+                Intent intent = new Intent(getApplicationContext(), open1_Main1.class);
                 startActivity(intent);
                 return true;
 
-            // 3번째 버튼
-            case R.id.open2_Maps:
-                Intent intent2 = new Intent(getApplicationContext(), open2_MapsActivity.class);
+            // 3번째 버튼: 모기 정보
+            case R.id.open1_mosquito:
+                Intent intent2 = new Intent(getApplicationContext(), open1_Main2.class);
                 startActivity(intent2);
                 return true;
 
-            // 4번째 버튼
-            case R.id.open2_Course:
-                Intent intent3 = new Intent(getApplicationContext(), open2_CourseActivity.class);
+            // 4번째 버튼: 공기 오염
+            case R.id.open1_air:
+                Intent intent3 = new Intent(getApplicationContext(), open1_Main3.class);
                 startActivity(intent3);
                 return true;
 

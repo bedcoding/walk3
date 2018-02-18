@@ -3,19 +3,20 @@
     <item android:id="@+id/weightSetting"
         android:title= "몸무게 설정"/>
 
-    <item android:id="@+id/plus_weather"
-        android:title= "바깥 환경"/>
+    <item
+        android:id="@+id/open1_weather"
+        android:title= "바깥 정보"/>
 
     <item
-        android:id="@+id/open2_Maps"
-        android:title="추천 코스 위치" />
+        android:id="@+id/open1_mosquito"
+        android:title= "모기 정보"/>
 
     <item
-        android:id="@+id/open2_Course"
-        android:title="추천 코스 요약" />
+        android:id="@+id/open1_air"
+        android:title= "대기 정보"/>
 
     <item
         android:id="@+id/open2_Place"
-        android:title="코스 상세 설명" />
+        android:title="추천 코스" />
 
 </menu>

@@ -153,7 +153,7 @@ public class WeatherFragment extends Fragment {
 
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // 버튼1: 새로 고침
+        // 버튼1: 새로 고침 (현재 레이아웃에서 안보이게 가림)
         if (item.getItemId() == R.id.refresh) {
             String[] urls = {queryUrlUltra, queryUrlDspls, queryUrlFsn, queryUrlHeatLife, queryInflWhoList,
                     querySeonsorytemLife, queryWinterLife, queryasthmaWho, querybrainWho, queryskinWho };
@@ -177,17 +177,12 @@ public class WeatherFragment extends Fragment {
             return (true);
         }
 
-        // 버튼2: 추가
+        // 버튼2: 추가 (현재 레이아웃에는 이거만 보이게 해둠)
         if (item.getItemId() == R.id.add) {
             setAddDialog();
             return (true);
         }
 
-        // 버튼3: 홈으로 이동
-        if (item.getItemId() == R.id.home) {
-            home();
-            return (true);
-        }
 
 /*
         if (item.getItemId() == R.id.share) {
@@ -198,12 +193,6 @@ public class WeatherFragment extends Fragment {
         return super.onOptionsItemSelected(item);
     }
 
-    // 버튼3 누를 경우 발동!
-    public void home() {
-        Intent intent = new Intent(getActivity(), FirstActivity.class);
-        startActivity(intent);
-        getActivity().finish();
-    }
 
     // 버튼2 누를 경우 발동!
     public void setAddDialog() {

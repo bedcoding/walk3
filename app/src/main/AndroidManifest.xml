@@ -27,7 +27,7 @@
         android:allowBackup="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         tools:replace="allowBackup,supportsRtl"
         android:theme="@style/AppTheme">
@@ -73,7 +73,20 @@
         <activity android:name=".phu1.LoggedInWalk"/>
         <activity android:name=".phu1.LoggedInRecord"/>
         <activity android:name=".phu1.SettingActivity"/>
+
         <!-- 생활지수 오픈소스 합치기 -->
+        <activity android:name=".ahn2.open1_Main1"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ahn2.open1_Main2"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <activity android:name=".ahn2.open1_Main3"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+
         <activity
             android:name="com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity"
             android:screenOrientation="portrait"
@@ -139,6 +152,9 @@
         <activity android:name=".lee2.BTMain"/>
         <activity android:name=".lee2.bluegetheart" />
 
+        <!-- 푸푸씨꺼 또 합침 -->
+        <activity android:name=".phu1.ProfilePicture" />
+        <activity android:name=".phu1.ProfilePictureUpload"></activity>
 
     </application>
 

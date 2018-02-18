@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,10 +34,15 @@ import android.widget.Toast;
 
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
+import com.example.ggavi.registeration.ahn2.open1_Main1;
+import com.example.ggavi.registeration.ahn2.open1_Main2;
+import com.example.ggavi.registeration.ahn2.open1_Main3;
 import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
 import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
+import com.example.ggavi.registeration.phu1.DownloadImageTask;
 import com.example.ggavi.registeration.phu1.FirstActivity;
+import com.example.ggavi.registeration.phu1.ImageData;
 import com.example.ggavi.registeration.phu1.LoggedInRecord;
 import com.example.ggavi.registeration.phu1.LoggedInWalk;
 import com.example.ggavi.registeration.phu1.SavedSharedPreference;
@@ -60,9 +66,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ListView noticeListView;
     private NoticeListAdapter adapter;
     private List<Notice> noticeList;
+
+    private ImageData imageData;
     public static String userID;   //모든 클래스에서 접근가능
 
     Typeface font_one;
+
+    private ImageView headerUserImageView;
+
 
 
     @Override
@@ -96,12 +107,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //set text view on navigation drawer's header (navigation drawer의 헤더 부분에 있는 text view를 셋팅)
         View headerView = navigationView.getHeaderView(0);
         TextView navUserID = (TextView) headerView.findViewById(R.id.headerUserId);
+        headerUserImageView = (ImageView)headerView.findViewById(R.id.headerUserPic);
+
         navUserID.setText(userID);
         navUserID.setTypeface(font_one);
 
         //set onclick listener for floating button - it will be connected to activity to walk (floating button onclick 리스너, 이걸 클릭하면 걷는 activity로 넘어가게 만들어야 함)
         FloatingActionButton fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
-
         fabBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this,"floating button onclick",Toast.LENGTH_LONG).show();
@@ -212,6 +224,112 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // 정상적으로 데이터베이스에 접근해서 찾아옴
         new BackgroundTask().execute();
+        new BackgroundTask2().execute();
+    }
+
+
+    class BackgroundTask2 extends AsyncTask<Void, Void, String> {
+        // (로딩창 띄우기 작업 3/1) 로딩창을 띄우기 위해 선언해준다.
+        ProgressDialog dialog = new ProgressDialog(MainActivity.this);
+
+        String target;  //우리가 접속할 홈페이지 주소가 들어감
+
+        @Override
+        protected void onPreExecute() {
+            target = "http://ggavi2000.cafe24.com/getImageFromServer.php?userId="+userID.trim();  //해당 웹 서버에 접속
+
+            // (로딩창 띄우기 작업 3/2)
+            dialog.setMessage("로딩중");
+            dialog.show();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            try {
+                // 해당 서버에 접속할 수 있도록 URL을 커넥팅 한다.
+                URL url = new URL(target);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                // 넘어오는 결과값을 그대로 저장
+                InputStream inputStream = httpURLConnection.getInputStream();
+
+                // 해당 inputStream에 있던 내용들을 버퍼에 담아서 읽을 수 있도록 해줌
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+                // 이제 temp에 하나씩 읽어와서 그것을 문자열 형태로 저장
+                String temp;
+                StringBuilder stringBuilder = new StringBuilder();
+
+                // null 값이 아닐 때까지 계속 반복해서 읽어온다.
+                while ((temp = bufferedReader.readLine()) != null) {
+                    // temp에 한줄씩 추가하면서 넣어줌
+                    stringBuilder.append(temp + "\n");
+                }
+
+                // 끝난 뒤 닫기
+                bufferedReader.close();
+                inputStream.close();
+                httpURLConnection.disconnect();  //인터넷도 끊어줌
+                System.out.println(">>"+stringBuilder.toString().trim());
+                return stringBuilder.toString().trim();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        public void onProgressUpdate(Void... values) {
+            super.onProgressUpdate();
+        }
+
+        @Override  //해당 결과를 처리할 수 있는 onPostExecute()
+        public void onPostExecute(String result) {
+            try {
+                // 해당 결과(result) 응답 부분을 처리
+
+                int pos = result.indexOf(":");
+                String test = result.substring(pos+1);
+                test = test.trim();
+                if(test.charAt(0)=='['&&test.charAt(1)==']'){
+                    System.out.println("null");
+                }else{
+                    System.out.println("exists");
+                    JSONObject jsonObject = new JSONObject(result);
+                    JSONArray jsonArray = jsonObject.getJSONArray("response");  //아까 변수 이름
+                    if(jsonArray==null){
+                        System.out.println("null");
+                    }else{
+                        System.out.println("exists");
+                    }
+
+                    int count = 0;
+                    String userId, image_data;
+
+                    // 현재 배열의 원소값을 저장
+                    JSONObject object;
+                    object = jsonArray.getJSONObject(0);
+
+
+                    userId = object.getString("image_tag");
+                    image_data = object.getString("image_data");
+
+                    System.out.println("check>>"+userId+"+"+image_data);
+
+                    imageData = new ImageData(userId, image_data);
+
+                    String path = imageData.getImage_data();
+                    new DownloadImageTask(headerUserImageView).execute(path);
+
+                }
+
+                // (로딩창 띄우기 작업 3/3)
+                // 작업이 끝나면 로딩창을 종료시킨다.
+                dialog.dismiss();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
@@ -347,27 +465,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
 
             // 1번째 버튼: 바깥 환경
-            case R.id.plus_weather:
-                Intent intent = new Intent(getApplicationContext(), LifeJisu_MainActivity.class);
+            case R.id.open1_weather:
+                Intent intent = new Intent(getApplicationContext(), open1_Main1.class);
                 startActivity(intent);
                 return true;
 
-            // 2번째 버튼
-            case R.id.open2_Maps:
-                Intent intent2 = new Intent(getApplicationContext(), open2_MapsActivity.class);
+            // 2번째 버튼: 모기 정보
+            case R.id.open1_mosquito:
+                Intent intent2 = new Intent(getApplicationContext(), open1_Main2.class);
                 startActivity(intent2);
                 return true;
 
-            // 3번째 버튼
-            case R.id.open2_Course:
-                Intent intent3 = new Intent(getApplicationContext(), open2_CourseActivity.class);
+            // 3번째 버튼: 공기 오염
+            case R.id.open1_air:
+                Intent intent3 = new Intent(getApplicationContext(), open1_Main3.class);
                 startActivity(intent3);
                 return true;
 
             // 4번째 버튼
             case R.id.open2_Place:
-                Intent intent4 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
-                startActivity(intent4);
+                Intent intent6 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
+                startActivity(intent6);
                 return true;
 
             default:

@@ -26,7 +26,7 @@ public class AirFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("대기정보");
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("대기 정보");
         ((AppCompatActivity) getActivity()).getSupportActionBar().setElevation(0);
         return inflater.inflate(R.layout.open1_fragment_air, container, false);
     }
