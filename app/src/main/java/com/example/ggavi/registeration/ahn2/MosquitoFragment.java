@@ -24,6 +24,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.kakao.kakaolink.KakaoLink;
 import com.kakao.kakaolink.KakaoTalkLinkMessageBuilder;
 
@@ -137,7 +138,8 @@ public class MosquitoFragment extends Fragment {
                         textView3.setText(value);  //TextView에 문자열  value 출력
                         textView4.setText(getGrade(value));
 
-                        mosquitoEntry = LifeJisu_MainActivity.dbHelper.fetchEntryByIndex(getGradeDetail(Double.valueOf(value)));
+                        mosquitoEntry = open1_Main2.dbHelper.fetchEntryByIndex(getGradeDetail(Double.valueOf(value)));
+                        //mosquitoEntry = LifeJisu_MainActivity.dbHelper.fetchEntryByIndex(getGradeDetail(Double.valueOf(value)));
                         grade= mosquitoEntry.getmGrade();
 
                         textView12.setText(mosquitoEntry.getDefence_activity());
