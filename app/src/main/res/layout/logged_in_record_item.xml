@@ -3,181 +3,239 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/serialNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="8dp"
-        android:text="1."
-        android:textColor="#000000"
-        android:textSize="15dp"
-        android:textStyle="bold" />
-
-    <TableLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:stretchColumns="*">
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary">
 
-        <TableRow>
+        <TextView
+            android:id="@+id/serialNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:text="1."
+            android:textColor="#000000"
+            android:textSize="13dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="날짜"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 날짜: "
+            android:textColor="#000000"
+            android:textSize="13dp" />
 
-            <TextView
-                android:id="@+id/dateRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/dateRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="2018-13-11"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="만보기"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:padding="3dp"
+            android:text="목표 달성률: 0%"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/pedometerRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="거리"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/distanceRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="칼로리"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/calorieRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="시간"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/timeRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_three"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="속력"
-                android:textColor="#ffffff"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/speedRecord"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_four"
-                android:gravity="center"
-                android:padding="3dp"
-                android:textColor="#000000"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
-        </TableRow>
-
-
-    </TableLayout>
-
-    <TextView
-        android:id="@+id/progress"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="목표 달성률: 80%"
-        android:padding="3dp"
-        android:textStyle="bold"
-        android:background="@color/colorWarning"
-        android:layout_margin="10dp"
-        android:textColor="#ffffff"/>
+        android:layout_margin="5dp"
+        android:background="#f2fffb"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="345dp"
+            android:layout_height="31dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconpedometer" />
+
+                <TextView
+                    android:id="@+id/pedometerRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="100"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="steps"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icondistance" />
+
+
+                <TextView
+                    android:id="@+id/distanceRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="100.00"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconcalorie" />
+
+
+                <TextView
+                    android:id="@+id/calorieRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="10000"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cal"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBackground" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icontime" />
+
+                <TextView
+                    android:id="@+id/timeRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="100:00:000"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="mins"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconspeed" />
+
+
+                <TextView
+                    android:id="@+id/speedRecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="150"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="km/h"
+                    android:textColor="#000000"
+                    android:textSize="13dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
 </LinearLayout>
 

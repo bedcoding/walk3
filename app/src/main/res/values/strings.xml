@@ -377,4 +377,7 @@
         "Students from nearby Sogang University, Hongik University, Myongji University, and Korea Aerospace University also frequent the area, explaining the economic growth and thoroughly “student-like” atmosphere.
     </string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="#ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,193 +12,234 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HIGH SCORE"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
+            android:gravity="center"
             android:padding="3dp"
-            android:textStyle="bold"
-            android:textSize="25dp"
+            android:layout_marginTop="5dp"
+            android:text="HIGH SCORES"
+            android:textColor="#000000"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="나의 기록중 최고의 기록들입니다."
             android:textColor="@color/colorAccent"
-            android:background="@color/colorPrimary"/>
+            android:textSize="13dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:background="#f2fffb">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="3dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconpedometer" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="만보기"
+                    android:textColor="#2a2a2a"
+                    android:textSize="13dp" />
+
+                <TextView
+                    android:id="@+id/hsPedo"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackground" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="3dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icondistance" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="거리"
+                    android:textColor="#2a2a2a"
+                    android:textSize="13dp"/>
+
+                <TextView
+                    android:id="@+id/hsDis"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="3dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconcalorie" />
+
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="칼로리"
+                    android:textColor="#2a2a2a"
+                    android:textSize="13dp"/>
+
+                <TextView
+                    android:id="@+id/hsCal"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="3dp"
+                android:layout_marginBottom="5dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icontime"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="시간"
+                    android:textColor="#2a2a2a"
+                    android:textSize="13dp"/>
+
+                <TextView
+                    android:id="@+id/hsTime"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorBackground" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:paddingLeft="3dp">
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/iconspeed"/>
+                <TextView
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="속력"
+                    android:textColor="#2a2a2a"
+
+                    android:textSize="13dp"/>
+
+                <TextView
+                    android:id="@+id/hsSpeed"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="5dp"
+                    android:textColor="#000000"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="*나의 기록중 최고의 기록들입니다."
+            android:layout_marginTop="5dp"
+            android:gravity="center"
             android:padding="3dp"
-            android:textSize="13dp"
-            android:textColor="@color/colorAccent"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp">
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="만보기"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:padding="5dp"
-                android:textColor="#ffffff"
-                android:background="@color/colorWarning"/>
-            <TextView
-                android:id="@+id/hsPedo"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:padding="5dp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="거리"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:padding="5dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorWarning"/>
-            <TextView
-                android:id="@+id/hsDis"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="칼로리"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:padding="5dp"
-                android:background="@color/colorWarning"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/hsCal"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:padding="5dp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="시간"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:padding="5dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorWarning"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="5dp"
-                android:id="@+id/hsTime"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="300dp"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@color/colorPrimary"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="속력"
-                android:gravity="center"
-                android:padding="5dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="#ffffff"
-                android:background="@color/colorWarning"/>
-            <TextView
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textSize="15dp"
-                android:id="@+id/hsSpeed"
-                android:padding="5dp"
-                android:textStyle="bold"
-                android:textColor="#000000"/>
-        </LinearLayout>
-    </LinearLayout>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="DETAILED RECORD"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:padding="3dp"
+            android:textColor="#000000"
             android:textStyle="bold"
-            android:textSize="25dp"
-            android:textColor="@color/colorAccent"
-            android:background="@color/colorPrimary"/>
+            android:textSize="15dp" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="*상세 기록입니다."
-            android:textSize="13dp"
+            android:gravity="center"
             android:padding="3dp"
-            android:textColor="@color/colorAccent"/>
+            android:text="상세 기록입니다."
+            android:textColor="@color/colorAccent"
+            android:textSize="13dp" />
+
         <ListView
+            android:id="@+id/recordListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recordListView"
-            android:divider="@color/colorAccent">
-        </ListView>
+            android:background="#f2fffb"
+            android:layout_marginTop="5dp"
+            android:divider="@color/colorPrimaryDark"
+            android:dividerHeight="1dp"></ListView>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

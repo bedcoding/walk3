@@ -47,13 +47,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-
     // 로그인 회원가입 php 연동 강좌에서 추가한 라이브러리
     compile 'com.android.volley:volley:1.0.0'
     implementation 'com.google.android.gms:play-services:11.8.0'
-
-
-
 
     // 생활지수 오픈소스 합칠때 복사 붙여넣기
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {

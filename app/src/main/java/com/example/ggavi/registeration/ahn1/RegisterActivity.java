@@ -89,6 +89,12 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                // 아이디가 5글자 이하 12글자 이상일때
+                if(userID.length()<5||userID.length()>12){
+                    new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"아이디는 5자이상 12자미만입니다.",true);
+                    return;
+                }
+
                 // 정상적으로 ID 값을 입력했을 경우 중복체크 시작
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
                     @Override
@@ -155,6 +161,19 @@ public class RegisterActivity extends AppCompatActivity {
                 // 하나라도 빈 공간이 있을 경우
                 if(userID.equals("") || userPassword.equals("") || userMajor.equals("") || userEmail.equals("") || userGender.equals("")) {
                     new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"빈 칸 없이 입력해주세요.",true);
+                    return;
+                }
+
+
+                // 유효성 검사 추가
+                if(userPassword.length()<5||userPassword.length()>15){
+                    new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"패스워드는 5자이상 15자미만입니다.",true);
+                    return;
+                }
+
+                if(!android.util.Patterns.EMAIL_ADDRESS.matcher(userEmail).matches())
+                {
+                    new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"잘못된 이메일형식입니다.",true);
                     return;
                 }
 

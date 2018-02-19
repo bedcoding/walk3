@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ggavi.registeration.ahn1.MainFragment">
+
+    <ImageButton
+        android:id="@+id/walk_imageButton"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:scaleType="centerInside"
+        android:background="@drawable/logo"
+        android:src="@drawable/image_onclick" />
+
+</FrameLayout>

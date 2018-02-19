@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ((AppCompatActivity) MainActivity.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "Walk Away" + "</font>")));
+
         Intent intent = getIntent();
         userID = intent.getExtras().getString("userID").toString();
         System.out.println("userID="+userID);
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navUserID.setText(userID);
         navUserID.setTypeface(font_one);
 
+
         //set onclick listener for floating button - it will be connected to activity to walk (floating button onclick 리스너, 이걸 클릭하면 걷는 activity로 넘어가게 만들어야 함)
         FloatingActionButton fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+
 
 
         // 이미지 버튼 추가
@@ -158,19 +161,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         final LinearLayout notice = (LinearLayout) findViewById(R.id.notice);  //해당 Fragment 눌렀을 때 화면의 레이아웃이 바뀌는 부분
 
 
-        // 메인 화면일 경우, 첫번째 버튼에 색깔이 들어오게 만든다 (runButton)
+        // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
         runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
         courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+
 
         // 1. 걷기시작 화면으로
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                /*
+                notice.setVisibility(View.GONE);
+
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                // fragment 부분을, new CourseFragment 이걸로 대체해주는 것
+                fragmentTransaction.replace(R.id.fragment, new MainFragment());
+                fragmentTransaction.commit();
+*/
+                finish();
+                Intent intent = new Intent(getApplicationContext(), LoggedInWalk.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
-                finish();
             }
         });
 
@@ -225,6 +239,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 정상적으로 데이터베이스에 접근해서 찾아옴
         new BackgroundTask().execute();
         new BackgroundTask2().execute();
+    }
+
+
+
+    // MainFragment로 값 전달
+    public Object getData() {
+        return userID;
     }
 
 
