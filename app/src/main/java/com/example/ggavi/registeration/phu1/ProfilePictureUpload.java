@@ -3,10 +3,9 @@ package com.example.ggavi.registeration.phu1;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
+import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.util.Base64;
@@ -15,26 +14,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.widget.Toast;
 
 import com.example.ggavi.registeration.R;
 import com.example.ggavi.registeration.ahn1.MainActivity;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.BufferedReader;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
+import java.io.BufferedWriter;
+import java.io.OutputStreamWriter;
+import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
+
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 
 public class ProfilePictureUpload extends AppCompatActivity {
 
@@ -111,12 +113,14 @@ public class ProfilePictureUpload extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public void onBackPressed() {
         finish(); // close this activity and return to preview activity (if there is any)
-        Intent intent = new Intent(ProfilePictureUpload.this,ProfilePicture.class);
+        Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
         startActivity(intent);
     }
+
     @Override
     protected void onActivityResult(int RC, int RQC, Intent I) {
         super.onActivityResult(RC, RQC, I);
@@ -132,39 +136,47 @@ public class ProfilePictureUpload extends AppCompatActivity {
     }
 
     public void UploadImageToServer() {
-        FixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-        byteArray = byteArrayOutputStream.toByteArray();
-        ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
-        class AsyncTaskUploadClass extends AsyncTask<Void, Void, String> {
+        System.out.println("debug>>" + byteArrayOutputStream);
 
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-                progressDialog = ProgressDialog.show(ProfilePictureUpload.this, "업로드중", "잠시 기다려주세요.", false, false);
-            }
+        if (FixBitmap == null) {
+            Toast.makeText(ProfilePictureUpload.this, "사진을 선택해주세요.", Toast.LENGTH_LONG).show();
+        } else {
+            FixBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+            byteArray = byteArrayOutputStream.toByteArray();
+            ConvertImage = Base64.encodeToString(byteArray, Base64.DEFAULT);
+            class AsyncTaskUploadClass extends AsyncTask<Void, Void, String> {
 
-            @Override
-            protected void onPostExecute(String string1) {
-                super.onPostExecute(string1);
-                progressDialog.dismiss();
-                Toast.makeText(ProfilePictureUpload.this, string1, Toast.LENGTH_LONG).show();
-                finish();
-                Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
-                startActivity(intent);
-            }
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    progressDialog = ProgressDialog.show(ProfilePictureUpload.this, "업로드중", "잠시 기다려주세요.", false, false);
+                }
 
-            @Override
-            protected String doInBackground(Void... params) {
-                ImageProcessClass imageProcessClass = new ImageProcessClass();
-                HashMap<String, String> HashMapParams = new HashMap<String, String>();
-                HashMapParams.put(ImageTag, userId);
-                HashMapParams.put(ImageName, ConvertImage);
-                String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
-                return FinalData;
+                @Override
+                protected void onPostExecute(String string1) {
+                    super.onPostExecute(string1);
+                    progressDialog.dismiss();
+                    Toast.makeText(ProfilePictureUpload.this, string1, Toast.LENGTH_LONG).show();
+                    finish();
+                    Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
+                    startActivity(intent);
+                }
+
+                @Override
+                protected String doInBackground(Void... params) {
+                    ImageProcessClass imageProcessClass = new ImageProcessClass();
+                    HashMap<String, String> HashMapParams = new HashMap<String, String>();
+                    HashMapParams.put(ImageTag, userId);
+                    HashMapParams.put(ImageName, ConvertImage);
+                    String FinalData = imageProcessClass.ImageHttpRequest(ServerUploadPath, HashMapParams);
+                    return FinalData;
+                }
             }
+            AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
+            AsyncTaskUploadClassOBJ.execute();
         }
-        AsyncTaskUploadClass AsyncTaskUploadClassOBJ = new AsyncTaskUploadClass();
-        AsyncTaskUploadClassOBJ.execute();
+        // System.out.println("bitmap>>"+FixBitmap);
+
     }
 
     public class ImageProcessClass {
@@ -216,4 +228,3 @@ public class ProfilePictureUpload extends AppCompatActivity {
         }
     }
 }
-

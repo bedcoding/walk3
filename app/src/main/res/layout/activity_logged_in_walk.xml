@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
 
+
         <!--Button to start/stop tracking-->
         <Button
             android:id="@+id/trackL"
@@ -35,6 +36,7 @@
             android:orientation="horizontal"
             android:background="#ce6eff"
             android:gravity="center">
+
             <!--steps-->
             <TextView
                 android:id="@+id/stepsL"
@@ -70,7 +72,6 @@
                 android:textColor="#fddeff"
                 android:textSize="13dp"
                 android:layout_marginRight="15dp"/>
-
             <!-- calorie -->
             <TextView
                 android:id="@+id/calL"
@@ -81,7 +82,6 @@
                 android:text="0.00"
                 android:textColor="#ffffff"
                 android:textSize="18dp"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -103,33 +103,6 @@
             android:background="@color/colorWarning"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
-<!--
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_border2">
-
-            <ImageView
-                android:id="@+id/heartPicL"
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/heart2" />
-
-            <EditText
-                android:id="@+id/heartrateL"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:text="심박수 측정"
-                android:textColor="#000000"
-                android:textSize="20dp" />
-        </LinearLayout>
--->
 
 
         <LinearLayout
@@ -176,6 +149,7 @@
                 android:text="%"
                 android:textColor="@color/colorWarning"
                 android:textSize="13dp"/>
+
         </LinearLayout>
 
         <fragment
@@ -189,16 +163,30 @@
             android:clickable="true"
             android:enabled="true" />
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_login_walk"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/heart2"
-            android:layout_gravity="bottom|right"
-            app:fabSize="normal"
-            app:backgroundTint="#DBFEDE"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/heartPicL"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:scaleType="centerInside"
+                android:background="@drawable/heart2" />
+
+            <TextView
+                android:id="@+id/heartrateL"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="심박수 측정"
+                android:textColor="#77547a"
+                android:textSize="20dp" />
+        </LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

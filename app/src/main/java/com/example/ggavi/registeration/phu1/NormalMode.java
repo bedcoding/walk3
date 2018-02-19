@@ -106,9 +106,10 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
     int seconds, minutes, milliSeconds;
     Handler handler;
 
-
+/*
     // 심박수 버튼 추가
     private FloatingActionButton fab2;
+*/
 
 
     @Override
@@ -217,6 +218,7 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
             mapFragment.getMapAsync(NormalMode.this);
         }
 
+        /*
         // (심박수 버튼 추가) Floating Action Button 적용
         fab2 = (FloatingActionButton) findViewById(R.id.fab_normal_walk);
 
@@ -229,6 +231,7 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                 startActivity(intent);
             }
         });
+        */
     }
 
 
