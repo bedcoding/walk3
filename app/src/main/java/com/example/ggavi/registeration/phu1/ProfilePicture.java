@@ -228,7 +228,7 @@ public class ProfilePicture extends AppCompatActivity {
 
                                                 // 만약 삭제할 수 있다면
                                                 if (success) {
-                                                    new CustomConfirmDialog().showConfirmDialog(ProfilePicture.this,"삭제하였습니다.",true);
+                                                    new CustomConfirmDialog().showConfirmDialog(ProfilePicture.this,"삭제하였습니다.",false);
                                                     Intent intent = getIntent();
                                                     intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                                                     finish();
