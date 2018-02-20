@@ -3,6 +3,7 @@ package com.example.ggavi.registeration.phu1;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -38,12 +39,13 @@ public class ProfilePicture extends AppCompatActivity {
     private Button delete;
     private String filename;
     private TextView propictitle;
+    Typeface font_one;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_picture);
-
+        font_one = Typeface.createFromAsset(getAssets(), "fonts/font_one.ttf"); //TitilliumWeb-Light from Titillium Web by Accademia di Belle Arti di Urbino (1001freefonts.com)
         ((AppCompatActivity) ProfilePicture.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "프로필 사진 설정" + "</font>")));
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -56,7 +58,8 @@ public class ProfilePicture extends AppCompatActivity {
         propictitle = (TextView)findViewById(R.id.propictitle);
 
         userId = MainActivity.userID.trim();
-        propictitle.setText(userId+"님의 프로필 사진");
+        propictitle.setText(userId+"'s profile picture");
+        propictitle.setTypeface(font_one);
         System.out.println(userId);
 
         new BackgroundTask().execute();

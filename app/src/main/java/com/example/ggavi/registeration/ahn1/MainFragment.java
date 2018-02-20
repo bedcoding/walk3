@@ -21,7 +21,11 @@ import com.example.ggavi.registeration.phu1.LoggedInWalk;
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment
+{
+    // MainActivity에서 받아오기 위해 선언
+    private String userID;
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -74,12 +78,14 @@ public class MainFragment extends Fragment {
         imageBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                userID = getActivity().getIntent().getExtras().getString("userID");
-                //getActivity().getIntent().putExtra("userID", userID);
-                //putExtra("userID", userID);
+                // MainActivity에서 userID를 받아온다.
+                userID = getActivity().getIntent().getExtras().getString("userID").toString();
 
                 Intent intent = new Intent(getActivity(), LoggedInWalk.class);
+                intent.putExtra("userID", userID);
                 startActivity(intent);
+
+                getActivity().finish();
             }
         });
     }
@@ -101,7 +107,8 @@ public class MainFragment extends Fragment {
         }
     }
 
-    private  Object userID;
+
+/*
 
     @Override
     public void onAttach(Context context) {
@@ -111,6 +118,7 @@ public class MainFragment extends Fragment {
             userID = ((MainActivity) getActivity()).getData();
         }
     }
+*/
 
 
     @Override

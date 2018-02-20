@@ -2,6 +2,7 @@ package com.example.ggavi.registeration.phu1;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
@@ -25,6 +26,7 @@ public class SettingActivity extends AppCompatActivity {
     private Button BlueTooth;
     private Button propicsetting;
     private String userId;
+    Typeface font_two;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +44,10 @@ public class SettingActivity extends AppCompatActivity {
         userId = MainActivity.userID;
         System.out.println(userId);
 
+        font_two = Typeface.createFromAsset(getAssets(), "fonts/font_two.ttf"); //NHC 고도 마음체 godoM
         // 첫번째 버튼: 몸무게 설정
         loggedInWeightSetting = (Button) findViewById(R.id.loggedInWeightSetting);
+        loggedInWeightSetting.setTypeface(font_two);
         loggedInWeightSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,6 +58,7 @@ public class SettingActivity extends AppCompatActivity {
 
         // 두번째 버튼: 전송할 전화번호 설정
         BlueTooth = (Button) findViewById(R.id.BlueTooth);
+        BlueTooth.setTypeface(font_two);
         BlueTooth.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -66,6 +71,7 @@ public class SettingActivity extends AppCompatActivity {
 
         // 세번째 버튼: 심박수 블루투스 연결
         SMS_setting = (Button) findViewById(R.id.SMS_setting);
+        SMS_setting.setTypeface(font_two);
         SMS_setting.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -77,6 +83,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
         propicsetting = (Button) findViewById(R.id.propicsetting);
+        propicsetting.setTypeface(font_two);
         propicsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,6 +102,7 @@ public class SettingActivity extends AppCompatActivity {
             finish(); // close this activity and return to preview activity (if there is any)
             Intent intent = new Intent(SettingActivity.this, MainActivity.class);
             intent.putExtra("userID", MainActivity.userID);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
@@ -105,6 +113,7 @@ public class SettingActivity extends AppCompatActivity {
         finish(); // close this activity and return to preview activity (if there is any)
         Intent intent = new Intent(SettingActivity.this, MainActivity.class);
         intent.putExtra("userID", MainActivity.userID);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 

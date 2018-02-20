@@ -64,12 +64,12 @@ public class RecordListAdapter extends BaseAdapter {
             progress.setText("목표를 지정하지 않았습니다.");
             progress.setBackgroundColor(Color.parseColor("#c5c5c5"));
         }else {
-            if(Integer.parseInt(progressSaved)<=33){
-                progress.setBackgroundColor(Color.parseColor("#ff0000"));
-            }else if(Integer.parseInt(progressSaved)>33&&Integer.parseInt(progressSaved)<=66){
-                progress.setBackgroundColor(Color.parseColor("#ffc400"));
-            }else if(Integer.parseInt(progressSaved)>66){
-                progress.setBackgroundColor(Color.parseColor("#24bd00"));
+            if(Integer.parseInt(progressSaved)<=33){ //low
+                progress.setBackgroundColor(Color.parseColor("#fc8080"));
+            }else if(Integer.parseInt(progressSaved)>33&&Integer.parseInt(progressSaved)<=66){ //middle
+                progress.setBackgroundColor(Color.parseColor("#fcc980"));
+            }else if(Integer.parseInt(progressSaved)>66){ //high
+                progress.setBackgroundColor(Color.parseColor("#80fcc9"));
             }
 
             progress.setText("목표 달성률: "+recordList.get(i).getProgress()+"%");
@@ -79,4 +79,6 @@ public class RecordListAdapter extends BaseAdapter {
         v.setTag(recordList.get(i).getUserId());
         return v;
     }
+
+
 }

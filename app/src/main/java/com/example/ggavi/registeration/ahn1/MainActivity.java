@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
         ((AppCompatActivity) MainActivity.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "Walk Away" + "</font>")));
 
+
         Intent intent = getIntent();
         userID = intent.getExtras().getString("userID").toString();
         System.out.println("userID="+userID);
@@ -167,12 +168,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
 
+
+
         // 1. 걷기시작 화면으로
         runButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
+
                 notice.setVisibility(View.GONE);
+
+
+                // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
+                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -180,11 +189,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // fragment 부분을, new CourseFragment 이걸로 대체해주는 것
                 fragmentTransaction.replace(R.id.fragment, new MainFragment());
                 fragmentTransaction.commit();
-*/
+
+                /*
                 finish();
                 Intent intent = new Intent(getApplicationContext(), LoggedInWalk.class);
                 intent.putExtra("userID", userID);
                 startActivity(intent);
+                */
             }
         });
 
@@ -242,11 +253,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
 
-
+/*
     // MainFragment로 값 전달
     public Object getData() {
         return userID;
     }
+*/
 
 
     class BackgroundTask2 extends AsyncTask<Void, Void, String> {
@@ -456,7 +468,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onBackPressed() {
         // 한번 버튼을 누른 뒤, 1.5초 이내에 또 누르면 종료
         if (System.currentTimeMillis() - lastTimeBackPressed < 1500) {
+            moveTaskToBack(true);
             finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
             return;
         }
 
@@ -597,6 +611,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // 설정 버튼
     public void settingAct() {
+        finish();
         Intent intent = new Intent(MainActivity.this, SettingActivity.class);
         startActivity(intent);
     }

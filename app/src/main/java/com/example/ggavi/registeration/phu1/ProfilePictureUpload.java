@@ -40,7 +40,8 @@ import java.net.HttpURLConnection;
 
 public class ProfilePictureUpload extends AppCompatActivity {
 
-    Button GetImageFromGalleryButton, UploadImageOnServerButton;
+    Button UploadImageOnServerButton;
+    ImageView GetImageFromGalleryButton;
     ImageView ShowSelectedImage;
     EditText GetImageName;
     Bitmap FixBitmap;
@@ -76,7 +77,8 @@ public class ProfilePictureUpload extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        GetImageFromGalleryButton = (Button) findViewById(R.id.select);
+        GetImageFromGalleryButton = (ImageView) findViewById(R.id.select);
+        GetImageFromGalleryButton.setClickable(true);
         UploadImageOnServerButton = (Button) findViewById(R.id.post);
         ShowSelectedImage = (ImageView) findViewById(R.id.selectedPic);
         userId = MainActivity.userID.trim();
@@ -85,7 +87,6 @@ public class ProfilePictureUpload extends AppCompatActivity {
         GetImageFromGalleryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -109,6 +110,7 @@ public class ProfilePictureUpload extends AppCompatActivity {
         if (item.getItemId() == android.R.id.home) {
             finish(); // close this activity and return to preview activity (if there is any)
             Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
@@ -118,6 +120,7 @@ public class ProfilePictureUpload extends AppCompatActivity {
     public void onBackPressed() {
         finish(); // close this activity and return to preview activity (if there is any)
         Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 
@@ -159,6 +162,7 @@ public class ProfilePictureUpload extends AppCompatActivity {
                     Toast.makeText(ProfilePictureUpload.this, string1, Toast.LENGTH_LONG).show();
                     finish();
                     Intent intent = new Intent(ProfilePictureUpload.this, ProfilePicture.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                     startActivity(intent);
                 }
 
