@@ -289,7 +289,7 @@
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="start|center"
                     android:text=" Heart Rate"
-                    android:textColor="#000000"
+                    android:textColor="#ffffff"
                     android:textSize="28sp" />
             </LinearLayout>
         </LinearLayout>

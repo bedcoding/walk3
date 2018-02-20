@@ -75,8 +75,9 @@ public class MainFragment extends Fragment {
             public void onClick(View v) {
 
                 userID = getActivity().getIntent().getExtras().getString("userID");
-                //getActivity().getIntent().putExtras("userID", userID);
-                //putExtra("userID",userID);
+                //getActivity().getIntent().putExtra("userID", userID);
+                //putExtra("userID", userID);
+
                 Intent intent = new Intent(getActivity(), LoggedInWalk.class);
                 startActivity(intent);
             }

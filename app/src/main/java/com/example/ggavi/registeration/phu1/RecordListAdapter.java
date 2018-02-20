@@ -54,10 +54,10 @@ public class RecordListAdapter extends BaseAdapter {
 
         // noticeText를 현재 리스트에 있는 값으로 넣어줄 수 있도록 한다.
         pedometer.setText(recordList.get(i).getPedometer());
-        distance.setText(recordList.get(i).getDistance()+ "km");
+        distance.setText(recordList.get(i).getDistance());
         calorie.setText(recordList.get(i).getCalorie());
         time.setText(recordList.get(i).getTime());
-        speed.setText(recordList.get(i).getSpeed()+"km/h");
+        speed.setText(recordList.get(i).getSpeed());
         date.setText(recordList.get(i).getDate());
         String progressSaved = recordList.get(i).getProgress().trim();
         if(progressSaved.equals("skipped")||progressSaved.equals("")){
@@ -74,11 +74,9 @@ public class RecordListAdapter extends BaseAdapter {
 
             progress.setText("목표 달성률: "+recordList.get(i).getProgress()+"%");
         }
-        serialNum.setText(i+1+".");
+        serialNum.setText(i+1+")");
 
         v.setTag(recordList.get(i).getUserId());
         return v;
     }
-
-
 }
