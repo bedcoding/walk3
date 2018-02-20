@@ -10,4 +10,11 @@
     <color name="colorSafe">#08C904</color>    <!-- 경쟁률 표시 -->
     <color name="colorWinner">#FFD700</color>  <!-- 랭킹 표시: 1등은 황금색 -->
     <color name="colorBackground">#AFEEEE</color>   <!-- 배경 색깔 -->
+
+    <!-- 색 추가 -->
+    <color name="Main_Blue">#2699FB</color>
+    <color name="Main_Blue_Dark">#257af9</color>
+    <color name="Light_Blue">#BCE0FD</color>
+    <color name="Light_Light_Blue">#d9ecfc</color>
+    <color name="White">#ffffff</color>
 </resources>

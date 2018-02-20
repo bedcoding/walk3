@@ -18,22 +18,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.provider.MediaStore;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.text.Html;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.Manifest;
 import android.content.Context;
@@ -60,10 +53,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
-import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
-import com.example.ggavi.registeration.lee1.SmsMainActivity;
-import com.example.ggavi.registeration.lee2.bluegetheart;
-import com.example.ggavi.registeration.phu1.FirstActivity;
 import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -419,7 +408,7 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
                             // do something
                             trackingButton.setText(" STOP ");
                             trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop, 0, 0, 0);
-                            trackingButton.setBackgroundResource(R.drawable.track_button_border_two);
+                            trackingButton.setBackgroundResource(R.drawable.button_background);
                             isTracking = true; //tracking started (트래킹시작)
 
                             if (isGoalEntered) {
@@ -505,8 +494,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                     });
                 } else {
                     trackingButton.setText(" START ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.go, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.track_button_border);
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.play_icon, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.button_background);
                     isTracking = false; //tracking stopped (트래킹 멈춤)
                     achievementLayout.setVisibility(View.GONE);
                     if (mGoogleApiClient != null) {
