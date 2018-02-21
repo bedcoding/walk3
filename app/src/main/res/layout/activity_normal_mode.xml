@@ -1,118 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
-    tools:context="com.example.ggavi.registeration.phu1.NormalMode">
+    tools:context="com.example.ggavi.registeration.phu1.NormalMode"
+    android:background="@color/White"
+    android:orientation="vertical"
+    android:weightSum="7"
+    >
 
+
+    <!-- Linear Layout Top Option Contain Views And Start Button-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_weight="1.8"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <!-- Start Button And Timer Layout  -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_weight="2.2"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- Start Button -->
+                <Button
+                    android:id="@+id/track"
+                    android:layout_width="120dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/button_background"
+                    android:drawableLeft="@drawable/play_icon"
+                    android:fontFamily="sans-serif-condensed"
+                    android:padding="8dp"
+                    android:shadowColor="@color/Main_Blue_Dark"
+                    android:text="start"
+                    android:textColor="@color/White"
+                    android:textSize="22sp" />
+
+                <!-- Timer View -->
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-condensed"
+                    android:gravity="center"
+                    android:text="0.00"
+                    android:textColor="@color/Main_Blue"
+                    android:textSize="22sp" />
+            </LinearLayout>
+
+            <!-- Steps , Km , Calories  Layout  -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.8"
+                android:orientation="vertical">
+
+                <!-- Steps Linear Layout  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Steps Name-->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="Steps"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/Light_Blue" />
+
+                    <!-- Steps Value -->
+                    <TextView
+                        android:id="@+id/steps"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <!-- Km  Linear Layout  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- KM Name  -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="km"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/Light_Blue" />
+
+                    <!-- KM View  -->
+                    <TextView
+                        android:id="@+id/distance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="0.000"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <!-- Calories  Linear Layout  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Calories Name  -->
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="Calories"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/Light_Blue" />
+
+                    <!-- Calories View  -->
+                    <TextView
+                        android:id="@+id/cal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-condensed"
+                        android:gravity="center"
+                        android:text="0.00"
+                        android:textColor="@color/Main_Blue"
+                        android:textSize="20sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/Light_Blue" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--Button to start/stop tracking-->
-        <Button
-            android:id="@+id/track"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:padding="5dp"
-            android:background="@drawable/track_button_border"
-            android:drawableLeft="@drawable/go"
-            android:text=" START  "
-            android:textColor="@color/colorAccent"
-            android:textSize="20dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#6edbf0"
-            android:gravity="center">
-
-            <!--steps-->
-            <TextView
-                android:id="@+id/steps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="0"
-                android:textColor="#ffffff"
-                android:textSize="18dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="steps"
-                android:textColor="#5c72ff"
-                android:textSize="13dp"
-                android:layout_marginRight="15dp"/>
-
-            <!-- distance-->
-            <TextView
-                android:id="@+id/distance"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="0.000"
-                android:textColor="#ffffff"
-                android:textSize="18dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="km"
-                android:textColor="#5c72ff"
-                android:textSize="13dp"
-                android:layout_marginRight="15dp"/>
-            <!-- calorie -->
-            <TextView
-                android:id="@+id/cal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:padding="3dp"
-                android:text="0.00"
-                android:textColor="#ffffff"
-                android:textSize="18dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="calories"
-                android:textColor="#5c72ff"
-                android:textSize="13dp"/>
-
-        </LinearLayout>
-
-        <!-- time-->
-        <TextView
-            android:id="@+id/time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="3dp"
-            android:text="00:00:000"
-            android:textColor="#ffffff"
-            android:background="#0092ed"
-            android:textSize="20dp"
-            android:textStyle="bold|italic" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:background="@drawable/layout_border2">
-        </LinearLayout>
-
-
-
+        <!-- Fragment Of Map -->
         <fragment
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -123,18 +204,5 @@
             android:layout_margin="5dp"
             android:clickable="true"
             android:enabled="true" />
-<!--
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_normal_walk"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/heart2"
-            android:layout_gravity="bottom|right"
-            app:fabSize="normal"
-            app:backgroundTint="#DBFEDE"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="10dp" />
--->
-
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
