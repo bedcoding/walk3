@@ -123,10 +123,6 @@
 
 
         <!-- 두번째 오픈소스 합치기 -->
-        <activity
-            android:name=".ahn3.open2_CourseActivity"
-            android:logo="@drawable/seoul_icon"
-            android:label="Course"/>
 
         <activity
             android:name=".ahn3.open2_PlaceActivity"
@@ -145,14 +141,9 @@
             android:name=".ahn3.open2_PlaceThirdActivity3"
             android:label="Place 액티비티" />
 
-        <activity
-            android:name=".ahn3.open2_MapsActivity"
-            android:label="Maps 액티비티" />
-
 
         <!-- 반장님 코드 합침 -->
         <activity android:name=".lee1.SmsMainActivity"/>
-        <activity android:name=".lee2.BTMain"/>
         <activity android:name=".lee2.bluegetheart" />
 
         <!-- 푸푸씨꺼 또 합침 -->

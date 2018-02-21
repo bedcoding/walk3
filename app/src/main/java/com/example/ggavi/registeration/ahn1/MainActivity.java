@@ -33,12 +33,9 @@ import android.widget.Toast;
 
 
 import com.example.ggavi.registeration.R;
-import com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity;
 import com.example.ggavi.registeration.ahn2.open1_Main1;
 import com.example.ggavi.registeration.ahn2.open1_Main2;
 import com.example.ggavi.registeration.ahn2.open1_Main3;
-import com.example.ggavi.registeration.ahn3.open2_CourseActivity;
-import com.example.ggavi.registeration.ahn3.open2_MapsActivity;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
 import com.example.ggavi.registeration.phu1.DownloadImageTask;
 import com.example.ggavi.registeration.phu1.FirstActivity;
@@ -613,24 +610,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void settingAct() {
         finish();
         Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-        startActivity(intent);
-    }
-
-    // 추천 코스 위치
-    public void open2_Maps() {
-        Intent intent = new Intent(MainActivity.this, open2_MapsActivity.class);
-        startActivity(intent);
-    }
-
-    // 추천 코스 요약
-    public void open2_Course() {
-        Intent intent = new Intent(MainActivity.this, open2_CourseActivity.class);
-        startActivity(intent);
-    }
-
-    // 코스 상세 설명
-    public void open2_Place() {
-        Intent intent = new Intent(MainActivity.this, open2_PlaceActivity.class);
         startActivity(intent);
     }
 }

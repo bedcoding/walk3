@@ -553,7 +553,6 @@ public class StatisticsFragment extends Fragment {
         }
     }
 
-    // (18) ScheduleFragment.java에서 복붙
     //  데이터베이스에 접속할 수 있도록 만든 함수
     class BackgroundTask extends AsyncTask<Void, Void, String>
     {
