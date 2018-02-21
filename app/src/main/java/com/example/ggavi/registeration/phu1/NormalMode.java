@@ -334,8 +334,8 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
 
                 if (!isTracking) {
                     trackingButton.setText(" STOP ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.track_button_border_two);
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop2, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.button_background2);
                     isTracking = true; //tracking started (트래킹시작)
 
                     //setting system time as start time (시스템의 시간을 가져와 startTime로 설정
@@ -377,8 +377,8 @@ public class NormalMode extends AppCompatActivity implements OnMapReadyCallback,
                     }
                 } else {
                     trackingButton.setText(" START ");
-                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.go, 0, 0, 0);
-                    trackingButton.setBackgroundResource(R.drawable.track_button_border);
+                    trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.play_icon, 0, 0, 0);
+                    trackingButton.setBackgroundResource(R.drawable.button_background2);
                     isTracking = false; //tracking stopped (트래킹 멈춤)
 
                     if (mGoogleApiClient != null) {

@@ -94,11 +94,12 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
     private LocationRequest mLocationRequest;
     private GoogleApiClient mGoogleApiClient;
     private Marker mCurrLocationMarker; //marker (마커)
-    private TextView distanceTv; //distance text view (거리 텍스트 뷰)
-    private TextView calTv; //calorie text view (칼로리 텍스트 뷰)
-    private TextView stepsTv; //step text view (걸음수 - 만보기 텍스트 뷰)
-    private TextView timeTv; //time text view (시간 텍스트 뷰)
+    private TextView distanceTv;    //distance text view (거리 텍스트 뷰)
+    private TextView calTv;         //calorie text view (칼로리 텍스트 뷰)
+    private TextView stepsTv;       //step text view (걸음수 - 만보기 텍스트 뷰)
+    private TextView timeTv;        //time text view (시간 텍스트 뷰)
     private LinearLayout achievementLayout;
+    private AlertDialog.Builder choosedistanse;  //목표설정에 공백 넣으면 띄울 Alert 창을 위해 선언
 
     private DecimalFormat kcalFormat = new DecimalFormat("#0.00"); //calorie -> 0.00 format (칼로리 -> 0.00 형식)
     private DecimalFormat kmFormat = new DecimalFormat("#0.000");//km-distance -> 0.000 format (km-거리 -> 0.000 형식)
@@ -370,8 +371,10 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View view) {
 
-                if (!isTracking) {
+                // 목표설정에 공백 넣으면 띄울 Alert 창을 위해 선언
+                choosedistanse = new AlertDialog.Builder(LoggedInWalk.this);
 
+                if (!isTracking) {
                     final Dialog dialog = new Dialog(LoggedInWalk.this);
                     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     dialog.setContentView(R.layout.goal_dialog);
@@ -395,19 +398,65 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
                     submitButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            isGoalEntered = true;
-                            goal = Double.parseDouble(goalEntered.getText().toString());
-                            dialog.dismiss();
 
+                            // 목표설정에서 공백 입력시 뜨는 Alert 창
+                            isGoalEntered = true;
+                            System.out.println("푸푸씨이이1: " + goalEntered.getText().toString());
+
+
+                            // 사용자가 공백을 넣은 경우
+                            if(goalEntered.getText().toString().equals(""))
+                            {
+                                choosedistanse.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();     //닫기
+                                    }
+                                });
+                                choosedistanse.setMessage("값을 입력해주세요.");
+                                choosedistanse.show();
+                            }
+
+
+                            // 공백이 아니었을 때
+                            else if(!(goalEntered.getText().toString().equals("")))
+                            {
+                                // 만약 사용자가 0이나 음수 값을 넣을 경우에 대비해서 Temp 선언 (예외처리용)
+                                double temp = Double.parseDouble(goalEntered.getText().toString());
+
+                                if(temp >= 0)
+                                {
+                                    choosedistanse.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.dismiss();     //닫기
+                                        }
+                                    });
+                                    choosedistanse.setMessage("0 이하의 값은 입력할 수 없습니다.");
+                                    choosedistanse.show();
+                                }
+                            }
+
+
+                            else  // 정상적으로 입력한 경우
+                            {
+                                System.out.println("푸푸씨이이2: " + goalEntered.getText().toString());
+                                goal = Double.parseDouble(goalEntered.getText().toString());
+
+                                dialog.dismiss();
+                            }
                         }
                     });
+
 
                     dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                         @Override
                         public void onDismiss(final DialogInterface arg0) {
                             // do something
                             trackingButton.setText(" STOP ");
-                            trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop, 0, 0, 0);
+                            trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.stop2, 0, 0, 0);
                             trackingButton.setBackgroundResource(R.drawable.button_background);
                             isTracking = true; //tracking started (트래킹시작)
 

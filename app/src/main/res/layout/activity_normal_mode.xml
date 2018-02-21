@@ -7,8 +7,7 @@
     tools:context="com.example.ggavi.registeration.phu1.NormalMode"
     android:background="@color/White"
     android:orientation="vertical"
-    android:weightSum="7"
-    >
+    android:weightSum="7">
 
 
     <!-- Linear Layout Top Option Contain Views And Start Button-->
@@ -39,7 +38,7 @@
                     android:id="@+id/track"
                     android:layout_width="120dp"
                     android:layout_height="60dp"
-                    android:background="@drawable/button_background"
+                    android:background="@drawable/button_background2"
                     android:drawableLeft="@drawable/play_icon"
                     android:fontFamily="sans-serif-condensed"
                     android:padding="8dp"
