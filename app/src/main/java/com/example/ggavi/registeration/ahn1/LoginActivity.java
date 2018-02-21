@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -23,17 +24,16 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
-
     private boolean saveLoginData;
     private String id;
     private String pwd;
     private CheckBox checkBox; //for saving login information (로그인 정보 저장하기)
     private SharedPreferences appData;
 
-
     private EditText idText;
     private EditText passwordText;
     private Button loginButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +62,35 @@ public class LoginActivity extends AppCompatActivity {
         idText = (EditText) findViewById(R.id.idText);
         passwordText = (EditText) findViewById(R.id.passwordText);
         loginButton = (Button) findViewById(R.id.loginButton);
-
         checkBox = (CheckBox) findViewById(R.id.checkBox);
 
         if (saveLoginData) {
             idText.setText(id);
             passwordText.setText(pwd);
             checkBox.setChecked(saveLoginData);
-
         }
+
+
+/*
+
+        // EditText 엔터키 막기
+        idText.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if(keyCode == event.KEYCODE_ENTER)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+        });
+
+*/
+
+
+
         // (5)로그인 버튼을 눌렀을 때 발생하는 이벤트 처리
         loginButton.setOnClickListener(new View.OnClickListener() {
 

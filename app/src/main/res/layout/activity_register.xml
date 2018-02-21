@@ -50,7 +50,10 @@
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:drawableLeft="@drawable/ic_check_black_24dp"
                 android:layout_marginRight="10dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorPrimary"
+
+                android:singleLine = "true"
+                android:lines = "1" />
 
                 <Button
                     android:id="@+id/validateButton"
@@ -65,7 +68,6 @@
             </LinearLayout>
             
 
-
             <EditText
                 android:inputType="textPassword"
                 android:layout_width="280dp"
@@ -79,7 +81,10 @@
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:drawableLeft="@drawable/ic_check_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorPrimary"
+
+                android:singleLine = "true"
+                android:lines = "1" />
 
             <EditText
                 android:layout_width="280dp"
@@ -93,7 +98,10 @@
                 android:drawableStart="@drawable/ic_check_black_24dp"
                 android:drawableLeft="@drawable/ic_check_black_24dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary" />
+                android:background="@color/colorPrimary"
+
+                android:singleLine = "true"
+                android:lines = "1" />
 
             <RadioGroup
                 android:layout_width="280dp"

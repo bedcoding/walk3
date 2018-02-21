@@ -20,6 +20,8 @@ import com.example.ggavi.registeration.phu1.CustomConfirmDialog;
 
 import org.json.JSONObject;
 
+import java.util.regex.Pattern;
+
 public class RegisterActivity extends AppCompatActivity {
 
     // (4)values 폴더에 추가한 arrays.xml 이놈을 담기 위해 선언
@@ -92,6 +94,13 @@ public class RegisterActivity extends AppCompatActivity {
                 // 아이디가 5글자 이하 12글자 이상일때
                 if(userID.length()<5||userID.length()>12){
                     new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"아이디는 5자이상 12자미만입니다.",true);
+                    return;
+                }
+
+                // 한글 입력 안되게 제한
+                if(!Pattern.matches("^[a-zA-Z0-9]*$", userID))
+                {
+                    new CustomConfirmDialog().showConfirmDialog(RegisterActivity.this,"아이디는 영어 대/소문자와 숫자만 가능합니다.",true);
                     return;
                 }
 
