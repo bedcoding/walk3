@@ -419,24 +419,18 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
                             }
 
 
-                            // 공백이 아니었을 때
-                            else if(!(goalEntered.getText().toString().equals("")))
+                            // 사용자가 0을 넣은 경우
+                            else if(goalEntered.getText().toString().equals("0"))
                             {
-                                // 만약 사용자가 0이나 음수 값을 넣을 경우에 대비해서 Temp 선언 (예외처리용)
-                                double temp = Double.parseDouble(goalEntered.getText().toString());
+                                choosedistanse.setPositiveButton("확인", new DialogInterface.OnClickListener() {
 
-                                if(temp >= 0)
-                                {
-                                    choosedistanse.setPositiveButton("확인", new DialogInterface.OnClickListener() {
-
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            dialog.dismiss();     //닫기
-                                        }
-                                    });
-                                    choosedistanse.setMessage("0 이하의 값은 입력할 수 없습니다.");
-                                    choosedistanse.show();
-                                }
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();     //닫기
+                                    }
+                                });
+                                choosedistanse.setMessage("값을 입력해주세요.");
+                                choosedistanse.show();
                             }
 
 
