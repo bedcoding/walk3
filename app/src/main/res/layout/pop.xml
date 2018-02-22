@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@drawable/border">
 
     <TextView
         android:drawableLeft="@drawable/ic_accessibility_black_24dp"
@@ -233,5 +233,4 @@
 
         </ScrollView>
     </LinearLayout>
-
 </LinearLayout>
