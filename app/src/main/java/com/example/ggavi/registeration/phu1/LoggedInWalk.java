@@ -983,7 +983,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             if(mBluetoothAdapter == null){
                 // 장치가 블루투스를 지원하지 않는 경우
-                finish();	// 어플리케이션 종료
+                Toast.makeText(getBaseContext(), "장치가 블루투스를 지원하지 않습니다", Toast.LENGTH_SHORT).show();
+                return;      // 종료
             }
             else {
                 // 장치가 블루투스를 지원하는 경우
@@ -1010,7 +1011,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
 
             if(mPairedDeviceCount == 0){
                 // 페어링 된 장치가 없는 경우
-                finish();		// 어플리케이션 종료
+                Toast.makeText(getBaseContext(), "페어링된 장치가 없습니다", Toast.LENGTH_SHORT).show();
+                return;      // 종료
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(LoggedInWalk.this);
@@ -1030,7 +1032,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                 public void onClick(DialogInterface dialog, int item){
                     if(item == mPairedDeviceCount){
                         // 연결할 장치를 선택하지 않고 ‘취소’를 누른 경우
-                        finish();
+                        Toast.makeText(getBaseContext(), "취소를 누르셨습니다", Toast.LENGTH_SHORT).show();
+                        return;      // 종료
                     }
                     else{
                         // 연결할 장치를 선택한 경우
@@ -1054,7 +1057,9 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                 // 소켓 생성
                 mSocket = mRemoteDevice.createRfcommSocketToServiceRecord(uuid);
                 // RFCOMM 채널을 통한 연결
+
                 mSocket.connect();
+
 
                 // 데이터 송수신을 위한 스트림 얻기
                 mOutputStream = mSocket.getOutputStream();
@@ -1064,7 +1069,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                 beginListenForData();
             }catch(Exception e){
                 // 블루투스 연결 중 오류 발생
-                finish();		// 어플리케이션 종료
+                Toast.makeText(getBaseContext(), "블루투스 장치 전원을 확인해주세요.", Toast.LENGTH_SHORT).show();
+                return;      // 종료
             }
         }
    /* void sendData(String msg){
@@ -1187,7 +1193,8 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                         }
                         catch (IOException ex){
                             // 데이터 수신 중 오류 발생
-                            finish();
+                            Toast.makeText(getBaseContext(), "데이터 수신 중 오류 발생", Toast.LENGTH_SHORT).show();
+                            return;      // 종료
                         }
                     }
                 }

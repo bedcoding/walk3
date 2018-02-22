@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,10 +21,10 @@ public class FirstActivity extends AppCompatActivity {
 
     private Button normalModeButton;
     private Button loginButton;
-    private ImageButton questionMarkButton;
+    private ImageView questionMarkButton;
     private TextView walkAwayTitle;
     Typeface font_one;
-    private ImageButton infoButton;
+    private ImageView infoButton;
   //  Typeface
 
     @Override
@@ -36,8 +36,8 @@ public class FirstActivity extends AppCompatActivity {
         font_one = Typeface.createFromAsset(getAssets(), "fonts/font_one.ttf"); //TitilliumWeb-Light from Titillium Web by Accademia di Belle Arti di Urbino (1001freefonts.com)
         normalModeButton = (Button) findViewById(R.id.normalModeButton);
         loginButton = (Button) findViewById(R.id.loginButton);
-        infoButton = (ImageButton)findViewById(R.id.infoButton);
-        questionMarkButton = (ImageButton) findViewById(R.id.questionMarkButton);
+        infoButton = (ImageView)findViewById(R.id.infoButton);
+        questionMarkButton = (ImageView) findViewById(R.id.questionMarkButton);
         walkAwayTitle = (TextView)findViewById(R.id.walkAwayTitle);
         walkAwayTitle.setTypeface(font_one);
 
