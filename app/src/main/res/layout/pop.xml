@@ -29,7 +29,7 @@
     <TextView
         android:drawableStart="@drawable/ic_local_cafe_black_24dp"
         android:drawableLeft="@drawable/ic_local_cafe_black_24dp"
-        android:text=" 버전 : 0.0"
+        android:text=" 버전 : 1.0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -45,7 +45,7 @@
     <TextView
         android:drawableStart="@drawable/ic_local_cafe_black_24dp"
         android:drawableLeft="@drawable/ic_local_cafe_black_24dp"
-        android:text=" 개발 : 부산외대 비트교육 4기 팔레트"
+        android:text=" 개발 : 부산외대 비트고급 4기 팔레트"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"

@@ -71,7 +71,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
-    <!--초반에 공지사항을 보여주는 부분-->
+    <!-- 첫 화면 (First screen) -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -106,6 +106,7 @@
                 android:layout_marginTop="10dp"/>
         </LinearLayout>
 
+<!--
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -114,10 +115,11 @@
             android:dividerHeight="10dp"
             android:divider="@color/colorBackground">
         </ListView>
+-->
 
     </LinearLayout>
 
-    <!--통계, 시간표, 목록 중 하나를 선택했을 때 이걸로 화면이 바뀜-->
+    <!-- 걷기 시작, 길 목록, 인기순 중 하나를 선택했을 때 이걸로 화면이 바뀜-->
       <RelativeLayout
           android:id="@+id/fragment"
           android:layout_width="match_parent"

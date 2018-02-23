@@ -60,9 +60,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     // (6)이곳은 로그인을 할 때 넘어오는 액티비티다.
     // Notice.java와 NoticeListAdapter.java를 넣을 변수 (공지글)
-    private ListView noticeListView;
-    private NoticeListAdapter adapter;
-    private List<Notice> noticeList;
+    // private ListView noticeListView;
+    // private NoticeListAdapter adapter;
+    // private List<Notice> noticeList;
 
     private ImageData imageData;
     public static String userID;   //모든 클래스에서 접근가능
@@ -139,8 +139,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // 공지글 notice 부분
-        noticeListView = (ListView) findViewById(R.id.noticeListView);
-        noticeList = new ArrayList<Notice>();
+        // noticeListView = (ListView) findViewById(R.id.noticeListView);
+        // noticeList = new ArrayList<Notice>();
 
         /*
         DB 연결하기 전에 만들었던 예시 데이터
@@ -150,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // adapter에 해당 List를 매칭 (각각 차례대로 매칭)
-        adapter = new NoticeListAdapter(getApplicationContext(), noticeList);
-        noticeListView.setAdapter(adapter);
+        // adapter = new NoticeListAdapter(getApplicationContext(), noticeList);
+        // noticeListView.setAdapter(adapter);
 
         final Button runButton = (Button) findViewById(R.id.run);
         final Button courseButton = (Button) findViewById(R.id.courseButton);
@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // 정상적으로 데이터베이스에 접근해서 찾아옴
-        new BackgroundTask().execute();
+        // new BackgroundTask().execute();
         new BackgroundTask2().execute();
     }
 
@@ -362,6 +362,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+/*
 
     // 공지사항 데이터베이스에 접속할 수 있도록 만든 함수
     class BackgroundTask extends AsyncTask<Void, Void, String> {
@@ -457,6 +458,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+*/
 
     // 두번 뒤로가기 버튼을 누르면 종료
     private long lastTimeBackPressed;

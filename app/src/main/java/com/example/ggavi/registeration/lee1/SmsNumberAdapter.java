@@ -11,6 +11,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn1.MainActivity;
 
 import org.json.JSONObject;
 
@@ -25,7 +26,7 @@ import java.util.List;
 
 public class SmsNumberAdapter extends BaseAdapter{
     private View v;
-    private String userID ="a";//메인에서 값 받아와야 한다.
+    private String userID = MainActivity.userID;//메인에서 값 받아와야 한다.
     private TextView numsName;
     private TextView smsNum1;
     private TextView smsText;

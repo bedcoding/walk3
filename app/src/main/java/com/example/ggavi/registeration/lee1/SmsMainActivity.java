@@ -19,6 +19,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn1.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -39,7 +40,7 @@ public class SmsMainActivity extends AppCompatActivity {
     private String userEmail;
     private AlertDialog dialog;  //알림창을 보여줌
     private boolean validate = false;  //사용할 수 있는 회원 아이디인지 체크
-    private static String userID = "a";//연결하면 메인에서 아이디를 받아와야함.
+    private static String userID = MainActivity.userID;//연결하면 메인에서 아이디를 받아와야함.
     private TextView userIDtext;//목록에 대한 안내가 있는 텍스트
     private ListView smsNumberViewList;//전화번호가 기록되는 리스트뷰
     private SmsNumberAdapter adapter;//
@@ -274,7 +275,7 @@ public class SmsMainActivity extends AppCompatActivity {
                         numsName = object.getString("numsName");
                         smsText = object.getString("smsText");
                     } else if (numAddFlag == true) {
-                        userID = SmsMainActivity.userID;
+                        userID = MainActivity.userID;
                         smsNum1 = smsNum1pass;
                         numsName = numNamepass;
                         smsText = smsTextpass;

@@ -536,7 +536,7 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                         }
                     });
                 } else {
-                    trackingButton.setText(" START ");
+                    trackingButton.setText("START");
                     trackingButton.setCompoundDrawablesWithIntrinsicBounds(R.drawable.play_icon, 0, 0, 0);
                     trackingButton.setBackgroundResource(R.drawable.button_background);
                     isTracking = false; //tracking stopped (트래킹 멈춤)
@@ -1162,14 +1162,21 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                                             if (list != null) {
                                                 if (list.size()==0) {
                                                     System.out.println("해당되는 주소 정보는 없습니다");
+                                                    sendSMS(PHnum,PHtext);
+
                                                 } else {
+                                                    sendSMS(PHnum,PHtext+"[현재예상위치->"+list.get(0).getAddressLine(0).toString()+"]");
+
                                                     System.out.println(list.get(0).getAddressLine(0).toString());
                                                 }
+                                            }else{
+                                                sendSMS(PHnum,PHtext+"[위치를 특정하지 못했습니다.");
                                             }
                                             //  System.out.println("문자 메세지를 전송 합니다.");
-                                            // sendSMS(PHnum,PHtext+"[현재예상위치->"+list.get(0).getAddressLine(0).toString()+"]");
+
                                             alertcount++;
                                         }
+
                                         if(bminum>200){
                                             //System.out.println("비프음이 울림.");
                                             beeper();
