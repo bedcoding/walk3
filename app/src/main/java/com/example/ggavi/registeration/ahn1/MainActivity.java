@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 //Toast.makeText(MainActivity.this,"floating button onclick",Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(MainActivity.this, LoggedInWalk.class);
-                intent.putExtra("userID",userID);
+                intent.putExtra("userID", userID);
                 finish();
                 startActivity(intent);
             }
@@ -160,9 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
-        runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-        courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+        runButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
+        courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+        statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
 
 
@@ -176,9 +176,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
-                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                runButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
+                courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -207,9 +207,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
-                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                runButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
+                statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -230,9 +230,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 notice.setVisibility(View.GONE);
 
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
-                runButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                courseButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-                statisticsButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                runButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
