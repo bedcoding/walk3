@@ -1,16 +1,29 @@
 package com.example.ggavi.registeration.phu1;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn2.open1_Main1;
+import com.example.ggavi.registeration.ahn2.open1_Main2;
+import com.example.ggavi.registeration.ahn2.open1_Main3;
+import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -34,12 +47,13 @@ public class LoggedInRecord extends AppCompatActivity {
     private RecordListAdapter adapter;
     private List<Record> recordList;
 
-
     private TextView hsPedo;
     private TextView hsDis;
     private TextView hsCal;
     private TextView hsTime;
     private TextView hsSpeed;
+
+    private TextView noRecAlert;
 
     private Integer maxPedo=0;
     private Double maxDis=0.000;
@@ -71,7 +85,7 @@ public class LoggedInRecord extends AppCompatActivity {
         hsTime = (TextView)findViewById(R.id.hsTime);
         hsSpeed = (TextView)findViewById(R.id.hsSpeed);
 
-
+        noRecAlert = (TextView)findViewById(R.id.noRecAlert);
 
         // adapter에 해당 List를 매칭 (각각 차례대로 매칭)
         adapter = new RecordListAdapter(getApplicationContext(), recordList);
@@ -144,6 +158,12 @@ public class LoggedInRecord extends AppCompatActivity {
                 // response에 각각의 공지사항 리스트가 담기게 됨
                 JSONArray jsonArray = jsonObject.getJSONArray("response");  //아까 변수 이름
 
+                System.out.println("length of jsonArray>>"+jsonArray.length());
+                if(jsonArray.length()==0){
+                    noRecAlert.setVisibility(View.VISIBLE);
+                }else{
+                    noRecAlert.setVisibility(View.GONE);
+                }
                 int count = 0;
                 String userId, pedometer, distance, calorie, time, speed, date, progress;
 
@@ -222,13 +242,112 @@ public class LoggedInRecord extends AppCompatActivity {
             }
         }
     }
+    //adding the menu on tool bar (액션바에서 메뉴 추가)
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logged_in_record_menu, menu);
+        return true;
+    }
+
+    // adding actions that will be done on clicking menu items
+    // (메뉴 아이템들을 클릭할 때 발생할 이벤트 추가)
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // handle arrow click here
-        if (item.getItemId() == android.R.id.home) {
-            finish(); // close this activity and return to preview activity (if there is any)
+
+        switch (item.getItemId()) {
+
+            case R.id.deleteAllRec:
+                deleteAllRec();
+                return true;
+
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return true;
         }
-        return super.onOptionsItemSelected(item);
+
     }
+
+    public void deleteAllRec(){
+        final Dialog dialog = new Dialog(LoggedInRecord.this); //here, the name of the activity class that you're writing a code in, needs to be replaced
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //for title bars not to be appeared (타이틀 바 안보이게)
+        dialog.setContentView(R.layout.alert_dialog); //setting view
+
+
+        //getting textviews and buttons from dialog
+        TextView dialogTitle = (TextView) dialog.findViewById(R.id.dialogTitle);
+        TextView dialogMessage = (TextView) dialog.findViewById(R.id.dialogMessage);
+        Button dialogButton1 = (Button) dialog.findViewById(R.id.dialogButton1);
+        Button dialogButton2 = (Button) dialog.findViewById(R.id.dialogButton2);
+
+        //You can change the texts on java code shown as below
+        dialogTitle.setText(" 모든 기록 삭제 ");
+        dialogMessage.setText("사용자 "+userID+"님의 모든 기록을 삭제하시겠습니까?");
+        dialogButton1.setText("삭제");
+        dialogButton2.setText("취소");
+
+        dialog.setCanceledOnTouchOutside(false); //dialog won't be dismissed on outside touch
+        dialog.setCancelable(false); //dialog won't be dismissed on pressed back
+        dialog.show(); //show the dialog
+
+        //here, I will only dismiss the dialog on clicking on buttons. You can change it to your code.
+        dialogButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //your code here
+                dialog.dismiss(); //to dismiss the dialog
+                // 정상적으로 ID 값을 입력했을 경우 중복체크 시작
+                Response.Listener<String> responseListener = new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        // 해당 웹사이트에 접속한 뒤 특정한 response(응답)을 다시 받을 수 있도록 한다
+                        try {
+                            System.out.println("aaa>>"+response);
+                            JSONObject jsonResponse = new JSONObject(response);
+                            boolean success = jsonResponse.getBoolean("success");
+
+                            // 만약 삭제할 수 있다면
+                            if (success) {
+                                new CustomConfirmDialog().showConfirmDialog(LoggedInRecord.this,"삭제하였습니다.",false);
+                                Intent intent = getIntent();
+                                intent.putExtra("userID",userID);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                finish();
+                                startActivity(intent);
+                            }
+
+                            // 삭제 실패
+                            else {
+                                new CustomConfirmDialog().showConfirmDialog(LoggedInRecord.this,"삭제를 실패하였습니다.",true);
+                            }
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                };
+
+                RecordDelete recordDelete = new RecordDelete(userID, responseListener);  // + ""를 붙이면 문자열 형태로 바꿈
+                RequestQueue queue = Volley.newRequestQueue(LoggedInRecord.this);
+                queue.add(recordDelete);
+
+
+            }
+        });
+
+        dialogButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //your code here
+                dialog.dismiss(); //to dismiss the dialog
+
+            }
+        });
+    }
+
 
 }

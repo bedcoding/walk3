@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="1dp"
             android:layout_marginTop="5dp"
             android:text="HIGH SCORES"
             android:textColor="#000000"
@@ -26,7 +26,7 @@
             android:gravity="center"
             android:text="나의 기록중 최고의 기록들입니다."
             android:textColor="@color/colorAccent"
-            android:textSize="13dp" />
+            android:textSize="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -217,7 +217,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:padding="3dp"
+            android:padding="1dp"
             android:text="DETAILED RECORD"
             android:textColor="#000000"
             android:textStyle="bold"
@@ -227,10 +227,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:padding="3dp"
             android:text="상세 기록입니다."
             android:textColor="@color/colorAccent"
-            android:textSize="13dp" />
+            android:textSize="12dp" />
+
+        <TextView
+            android:id="@+id/noRecAlert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f2fffb"
+            android:layout_marginTop="15dp"
+            android:padding="15dp"
+            android:textSize="20dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="아직 저장된 기록이 없습니다."
+            android:gravity="center"
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
         <ListView
             android:id="@+id/recordListView"
