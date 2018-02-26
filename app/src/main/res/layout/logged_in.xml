@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+        <!-- Floating Button
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabBtn"
             android:layout_width="70dp"
@@ -32,6 +33,8 @@
             app:backgroundTint="#DBFEDE"
             android:layout_marginBottom="10dp"
             android:layout_marginRight="10dp" />
+        -->
+
     </android.support.design.widget.CoordinatorLayout>
 
     <android.support.design.widget.NavigationView

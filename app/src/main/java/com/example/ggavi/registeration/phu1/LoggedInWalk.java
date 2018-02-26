@@ -978,7 +978,7 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
         public bt(){
             new BT_BackgroundTask().execute();
         }
-        //블ㄹ투스가 켜져있는지 지원하는지 확인 활성화 상태로 바꾸기 위한 부분
+        //블루투스가 켜져있는지 지원하는지 확인 활성화 상태로 바꾸기 위한 부분
         void checkBluetooth(){
             mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             if(mBluetoothAdapter == null){

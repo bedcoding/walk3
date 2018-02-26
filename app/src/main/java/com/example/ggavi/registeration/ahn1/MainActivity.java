@@ -39,6 +39,7 @@ import com.example.ggavi.registeration.ahn2.open1_Main3;
 import com.example.ggavi.registeration.ahn3.open2_PlaceActivity;
 import com.example.ggavi.registeration.phu1.DownloadImageTask;
 import com.example.ggavi.registeration.phu1.FirstActivity;
+import com.example.ggavi.registeration.phu1.Fragment_loggedInRecord;
 import com.example.ggavi.registeration.phu1.ImageData;
 import com.example.ggavi.registeration.phu1.LoggedInRecord;
 import com.example.ggavi.registeration.phu1.LoggedInWalk;
@@ -47,6 +48,7 @@ import com.example.ggavi.registeration.phu1.SettingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navUserID.setTypeface(font_one);
 
 
+/*      // Floating 버튼 제거
         //set onclick listener for floating button - it will be connected to activity to walk (floating button onclick 리스너, 이걸 클릭하면 걷는 activity로 넘어가게 만들어야 함)
         FloatingActionButton fabBtn = (FloatingActionButton) findViewById(R.id.fabBtn);
         fabBtn.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
+*/
 
 
 
@@ -136,6 +140,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 finish();
             }
         });
+
+
+        // 텍스트 버튼 추가
+        TextView Start = (TextView) findViewById(R.id.start_text);
+        Start.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LoggedInWalk.class);
+                intent.putExtra("userID", userID);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
         // 공지글 notice 부분
@@ -155,14 +174,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final Button runButton = (Button) findViewById(R.id.run);
         final Button courseButton = (Button) findViewById(R.id.courseButton);
-        final Button statisticsButton = (Button) findViewById(R.id.statisticsButton);
+        //final Button statisticsButton = (Button) findViewById(R.id.statisticsButton);
         final LinearLayout notice = (LinearLayout) findViewById(R.id.notice);  //해당 Fragment 눌렀을 때 화면의 레이아웃이 바뀌는 부분
 
 
         // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
         runButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
         courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
-        statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+        //statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
 
 
@@ -178,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
                 runButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
                 courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
-                statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                //statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -209,18 +228,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 // 선택된 버튼만 색상을 어둡게 만들고 나머지 버튼은 밝은 색상으로 변경
                 runButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
                 courseButton.setBackground(getResources().getDrawable(R.drawable.button_back_dark_color));
-                statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
+                //statisticsButton.setBackground(getResources().getDrawable(R.drawable.button_back_prime_color));
 
                 FragmentManager fragmentManager = getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 // fragment 부분을, new CourseFragment 이걸로 대체해주는 것
-                fragmentTransaction.replace(R.id.fragment, new CourseFragment());
+                //fragmentTransaction.replace(R.id.fragment, new CourseFragment());
+                fragmentTransaction.replace(R.id.fragment, new Fragment_loggedInRecord());
                 fragmentTransaction.commit();
             }
         });
 
-
+/*
         // 3. 통계 버튼
         statisticsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,6 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentTransaction.commit();
             }
         });
+*/
 
 
         // 정상적으로 데이터베이스에 접근해서 찾아옴

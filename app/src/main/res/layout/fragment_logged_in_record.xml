@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    tools:context="com.example.ggavi.registeration.phu1.Fragment_loggedInRecord">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,14 +20,6 @@
             android:textSize="15dp"
             android:textStyle="bold"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="나의 기록중 최고의 기록들입니다."
-            android:textColor="@color/colorAccent"
-            android:textSize="12dp" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginBottom="1dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="1dp"
                 android:paddingLeft="3dp"
                 android:orientation="horizontal">
 
@@ -80,8 +71,8 @@
                 android:layout_gravity="center"
                 android:paddingLeft="3dp"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -116,8 +107,8 @@
                 android:layout_gravity="center"
                 android:orientation="horizontal"
                 android:paddingLeft="3dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp">
 
                 <ImageView
                     android:layout_width="30dp"
@@ -151,9 +142,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
                 android:paddingLeft="3dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp">
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
@@ -185,8 +176,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
                 android:paddingLeft="3dp">
                 <ImageView
                     android:layout_width="30dp"
@@ -225,14 +216,6 @@
             android:textSize="15dp" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="상세 기록입니다."
-            android:textColor="@color/colorAccent"
-            android:textSize="12dp" />
-
-        <TextView
             android:id="@+id/noRecAlert"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -256,4 +239,5 @@
             android:dividerHeight="1dp"></ListView>
 
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
+</FrameLayout>
