@@ -626,6 +626,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void myRecord() {
         Intent intent = new Intent(MainActivity.this, LoggedInRecord.class);
         intent.putExtra("userID",userID);
+        finish();
         startActivity(intent);
     }
 

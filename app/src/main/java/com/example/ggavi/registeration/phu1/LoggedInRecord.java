@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.example.ggavi.registeration.R;
+import com.example.ggavi.registeration.ahn1.MainActivity;
 import com.example.ggavi.registeration.ahn2.open1_Main1;
 import com.example.ggavi.registeration.ahn2.open1_Main2;
 import com.example.ggavi.registeration.ahn2.open1_Main3;
@@ -38,6 +40,8 @@ import java.util.List;
 
 public class LoggedInRecord extends AppCompatActivity {
 
+    // (4)values 폴더에 추가한 arrays.xml 이놈을 담기 위해 선언
+
 
     private static String userID = "";
 
@@ -45,30 +49,18 @@ public class LoggedInRecord extends AppCompatActivity {
     private RecordListAdapter adapter;
     private List<Record> recordList;
 
-    private TextView hsPedo;
-    private TextView hsDis;
-    private TextView hsCal;
-    private TextView hsTime;
-    private TextView hsSpeed;
-
     private TextView noRecAlert;
 
-    private Integer maxPedo=0;
-    private Double maxDis=0.000;
-    private Double maxCal=0.00;
-    private Double maxTime=0.0;
-    private String maxTimeS="00:00:000";
-    private Double maxSpeed=0.0;
-
+    private Button deleteAllRec;
+    private TextView titleForRecord;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.logged_in_record);
         recordListView = (ListView) findViewById(R.id.recordListView);
-        ((AppCompatActivity) LoggedInRecord.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "나의 기록" + "</font>")));
+        ((AppCompatActivity) LoggedInRecord.this).getSupportActionBar().setTitle((Html.fromHtml("<font color='#ffffff'>" + "나의 기록 관리" + "</font>")));
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -78,14 +70,20 @@ public class LoggedInRecord extends AppCompatActivity {
         Intent intent = getIntent();
         userID = intent.getExtras().getString("userID").toString();
 
-        hsPedo = (TextView)findViewById(R.id.hsPedo);
-        hsDis = (TextView)findViewById(R.id.hsDis);
-        hsCal = (TextView)findViewById(R.id.hsCal);
-        hsTime = (TextView)findViewById(R.id.hsTime);
-        hsSpeed = (TextView)findViewById(R.id.hsSpeed);
-
         noRecAlert = (TextView)findViewById(R.id.noRecAlert);
 
+        deleteAllRec = (Button)findViewById(R.id.deleteAllRec);
+
+        titleForRecord = (TextView)findViewById(R.id.titleForRecord);
+
+        titleForRecord.setText("사용자 "+userID+"님의 상세 기록입니다.");
+
+        deleteAllRec.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteAllRec();
+            }
+        });
         // adapter에 해당 List를 매칭 (각각 차례대로 매칭)
         adapter = new RecordListAdapter(getApplicationContext(), recordList);
         recordListView.setAdapter(adapter);
@@ -160,11 +158,13 @@ public class LoggedInRecord extends AppCompatActivity {
                 System.out.println("length of jsonArray>>"+jsonArray.length());
                 if(jsonArray.length()==0){
                     noRecAlert.setVisibility(View.VISIBLE);
+                    deleteAllRec.setVisibility(View.GONE);
                 }else{
                     noRecAlert.setVisibility(View.GONE);
+                    deleteAllRec.setVisibility(View.VISIBLE);
                 }
                 int count = 0;
-                String userId, pedometer, distance, calorie, time, speed, date, progress;
+                String userId, pedometer, distance, calorie, time, speed, date, progress,datetime;
 
                 while (count < jsonArray.length()) {
                     // 현재 배열의 원소값을 저장
@@ -179,59 +179,19 @@ public class LoggedInRecord extends AppCompatActivity {
                     time = object.getString("time");
                     speed = object.getString("speed");
                     date = object.getString("date");
+                    int pos = date.indexOf(" ");
+                    date = date.substring(0,pos);
+                    datetime= object.getString("date");
                     progress = object.getString("progress");
 
                     // 하나의 공지사항에 대한 객체를 만들어줌
-                    Record record = new Record(userId, pedometer, distance, calorie, time, speed, date, progress);
+                    Record record = new Record(userId, pedometer, distance, calorie, time, speed, date, progress,datetime);
 
                     // 리스트에 추가해줌
                     recordList.add(record);
                     adapter.notifyDataSetChanged();
                     count++;
                 }
-
-
-                for(int i=0;i<recordList.size();i++){
-                    if(maxPedo<Integer.parseInt(recordList.get(i).getPedometer().trim())){
-                        maxPedo = Integer.parseInt(recordList.get(i).getPedometer().trim());
-                    }
-                    if(maxDis<Double.parseDouble(recordList.get(i).getDistance().trim())){
-                        maxDis = Double.parseDouble(recordList.get(i).getDistance().trim());
-                    }
-                    if(maxCal<Double.parseDouble(recordList.get(i).getCalorie().trim())){
-                        maxCal = Double.parseDouble(recordList.get(i).getCalorie().trim());
-                    }
-                    if(maxSpeed<Double.parseDouble(recordList.get(i).getSpeed().trim())){
-                        maxSpeed = Double.parseDouble(recordList.get(i).getSpeed().trim());
-                    }
-                    String time1 = recordList.get(i).getTime().trim();
-                    int pos_1 = time1.indexOf(":");
-                    String minute = time1.substring(0,pos_1);
-                    System.out.println(minute);
-                    String aa = time1.substring(pos_1);
-                    String aa2 = aa.substring(1);
-                    int pos_2 = aa2.indexOf(":");
-                    String second = aa2.substring(0,pos_2);
-                    System.out.println(second);
-                    String aa3 = aa2.substring(pos_2);
-                    String millisecond = aa3.substring(1);
-                    System.out.println(millisecond);
-
-                    //minute + second/60 + (millisecond/60)/1000 = total time
-                    double totalTime = Double.parseDouble(minute) + (Double.parseDouble(second)/60) + ((Double.parseDouble(millisecond)/60)/1000);
-                    if(maxTime<totalTime){
-                       maxTime = totalTime;
-                       maxTimeS = recordList.get(i).getTime();
-                    }
-                }
-
-                hsPedo.setText(String.valueOf(maxPedo));
-                hsDis.setText(Double.toString(maxDis)+"km");
-                hsCal.setText(Double.toString(maxCal));
-                hsSpeed.setText(Double.toString(maxSpeed)+"km/h");
-                hsTime.setText(maxTimeS);
-
-
 
                 // (로딩창 띄우기 작업 3/3)
                 // 작업이 끝나면 로딩창을 종료시킨다.
@@ -242,12 +202,6 @@ public class LoggedInRecord extends AppCompatActivity {
         }
     }
     //adding the menu on tool bar (액션바에서 메뉴 추가)
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.logged_in_record_menu, menu);
-        return true;
-    }
 
     // adding actions that will be done on clicking menu items
     // (메뉴 아이템들을 클릭할 때 발생할 이벤트 추가)
@@ -256,18 +210,26 @@ public class LoggedInRecord extends AppCompatActivity {
 
         switch (item.getItemId()) {
 
-            case R.id.deleteAllRec:
-                deleteAllRec();
-                return true;
-
             case android.R.id.home:
                 finish();
+                Intent intent = new Intent(LoggedInRecord.this, MainActivity.class);
+                intent.putExtra("userID", MainActivity.userID);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
                 return true;
 
             default:
                 return true;
         }
 
+    }
+    @Override
+    public void onBackPressed() {
+        finish(); // close this activity and return to preview activity (if there is any)
+        Intent intent = new Intent(LoggedInRecord.this, MainActivity.class);
+        intent.putExtra("userID", MainActivity.userID);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(intent);
     }
 
     public void deleteAllRec(){
@@ -305,7 +267,7 @@ public class LoggedInRecord extends AppCompatActivity {
 
                         // 해당 웹사이트에 접속한 뒤 특정한 response(응답)을 다시 받을 수 있도록 한다
                         try {
-                            System.out.println("aaa>>"+response);
+                            System.out.println("response>>"+response);
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
 

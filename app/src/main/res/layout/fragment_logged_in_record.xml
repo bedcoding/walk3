@@ -4,240 +4,293 @@
     android:layout_height="match_parent"
     tools:context="com.example.ggavi.registeration.phu1.Fragment_loggedInRecord">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="1dp"
-            android:layout_marginTop="5dp"
-            android:text="HIGH SCORES"
-            android:textColor="#000000"
-            android:textSize="15dp"
-            android:textStyle="bold"/>
+        android:background="#fff"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical"
-            android:background="#f2fffb">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleForHighScore"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="최고기록입니다."
+                android:textColor="@color/colorAccent"
+                android:textSize="15dp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="1dp"
-                android:layout_marginTop="1dp"
-                android:paddingLeft="3dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="5dp"
+                android:background="#f2fffb"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/iconpedometer" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="3dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/iconpedometer" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="만보기"
+                        android:textColor="#2a2a2a"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/hsPedo"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:shadowColor="@color/colorAccent"
+                        android:padding="5dp"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
 
                 <TextView
-                    android:layout_width="150dp"
+                    android:id="@+id/pedoDT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="만보기"
-                    android:textColor="#2a2a2a"
+                    android:gravity="right"
+                    android:layout_marginRight="3dp"
+                    android:textColor="@color/colorAccent"
                     android:textSize="13dp" />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="3dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/icondistance" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="거리"
+                        android:textColor="#2a2a2a"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/hsDis"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="5dp"
+                        android:shadowColor="@color/colorAccent"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
                 <TextView
-                    android:id="@+id/hsPedo"
-                    android:layout_width="150dp"
+                    android:id="@+id/disDT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_marginRight="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13dp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBackground" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorBackground" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="3dp"
-                android:orientation="horizontal"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icondistance" />
-
-                <TextView
-                    android:layout_width="150dp"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="거리"
-                    android:textColor="#2a2a2a"
-                    android:textSize="13dp"/>
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="3dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/iconcalorie" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="칼로리"
+                        android:textColor="#2a2a2a"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/hsCal"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="5dp"
+                        android:shadowColor="@color/colorAccent"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/hsDis"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBackground" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="3dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp">
-
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/iconcalorie" />
-
-                <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="칼로리"
-                    android:textColor="#2a2a2a"
-                    android:textSize="13dp"/>
-
-                <TextView
-                    android:id="@+id/hsCal"
-                    android:layout_width="150dp"
+                    android:id="@+id/calDT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBackground" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:paddingLeft="3dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icontime"/>
-                <TextView
-                    android:layout_width="150dp"
+                    android:layout_marginRight="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="시간"
-                    android:textColor="#2a2a2a"
-                    android:textSize="13dp"/>
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="3dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/icontime" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="시간"
+                        android:textColor="#2a2a2a"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/hsTime"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="5dp"
+                        android:shadowColor="@color/colorAccent"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/hsTime"
-                    android:layout_width="150dp"
+                    android:id="@+id/timeDT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/colorBackground" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="1dp"
-                android:paddingLeft="3dp">
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/iconspeed"/>
-                <TextView
-                    android:layout_width="150dp"
+                    android:layout_marginRight="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorBackground" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="속력"
-                    android:textColor="#2a2a2a"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="3dp">
 
-                    android:textSize="13dp"/>
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/iconspeed" />
+
+                    <TextView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="속력"
+                        android:textColor="#2a2a2a"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/hsSpeed"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right"
+                        android:padding="5dp"
+                        android:shadowColor="@color/colorAccent"
+                        android:shadowDx="1"
+                        android:shadowDy="1"
+                        android:shadowRadius="2"
+                        android:textColor="#000000"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
-                    android:id="@+id/hsSpeed"
-                    android:layout_width="150dp"
+                    android:id="@+id/speedDT"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="right"
-                    android:padding="5dp"
-                    android:textColor="#000000"
-                    android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:layout_marginRight="3dp"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="13dp" />
             </LinearLayout>
+
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:padding="1dp"
-            android:text="DETAILED RECORD"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/noRecAlert"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f2fffb"
-            android:layout_marginTop="15dp"
-            android:padding="15dp"
-            android:textSize="20dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="아직 저장된 기록이 없습니다."
-            android:gravity="center"
-            android:textStyle="bold"
-            android:visibility="gone"/>
-
-        <ListView
-            android:id="@+id/recordListView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#f2fffb"
-            android:layout_marginTop="5dp"
-            android:divider="@color/colorPrimaryDark"
-            android:dividerHeight="1dp"></ListView>
-
-    </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>

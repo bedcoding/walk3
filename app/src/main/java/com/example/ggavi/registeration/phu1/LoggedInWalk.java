@@ -89,6 +89,7 @@ import java.util.UUID;
 public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks, SensorEventListener, StepListener {
 
     private String userID;
+    private BroadcastReceiver broadcastReceiver;
 
     private GoogleMap mMap; //map (맵)
     private LocationRequest mLocationRequest;
@@ -182,6 +183,9 @@ public class LoggedInWalk extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
+
 
         // 상단 액션바(타이틀 바) 없애려고 넣음
         getSupportActionBar().hide();
@@ -834,7 +838,7 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
 
             if (location != null) {
                 if ((location.getAccuracy() > 15 && this != null)) { //if gps connection is week (gps수신이 약한 경우)
-                    Toast.makeText(LoggedInWalk.this, "GPS 수신이 약하기 때문에 거리 측정이 어렵습니다.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoggedInWalk.this, "GPS 수신이 약하기 때문에 거리 측정이 어렵습니다.", Toast.LENGTH_SHORT).show();
                     //mentioning "GPS connection is week. It is difficult to predict the distance.
                 }
 
@@ -1224,7 +1228,7 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
             PendingIntent deliveredPI = PendingIntent.getBroadcast(LoggedInWalk.this, 0, new Intent(DELIVERED), 0);
 
             //---when the SMS has been sent---
-            registerReceiver(new BroadcastReceiver() {
+            broadcastReceiver=new BroadcastReceiver() {
                 public void onReceive(Context arg0, Intent arg1) {
                     switch (getResultCode()) {
                         case Activity.RESULT_OK:
@@ -1232,11 +1236,15 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
                             break;
                     }
                 }
-            }, new IntentFilter(SENT));
+            };
+
+            registerReceiver(broadcastReceiver, new IntentFilter(SENT));
 
             SmsManager sms = SmsManager.getDefault();
             sms.sendTextMessage(phoneNumber, null, message, sentPI, deliveredPI);
         }
+
+
 
 
 
@@ -1360,5 +1368,14 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
         }catch(Exception e){}
 
         super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(broadcastReceiver!=null) {
+            unregisterReceiver(broadcastReceiver);
+        }
     }
 }

@@ -20,20 +20,18 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <!-- (28)어플 로고 아이콘, 제목 변경 / label을 수정해서 상단바 글자 설정 -->
     <!-- 푸푸씨가 넣은 사진첨부 기능 용량초과로 터지길래 구글링해서 밑에 2줄 넣음 -->
     <application
         android:allowBackup="false"
+        android:hardwareAccelerated="false"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        tools:replace="allowBackup,supportsRtl"
         android:theme="@style/AppTheme"
-
-        android:hardwareAccelerated="false"
-        android:largeHeap="true">
+        tools:replace="allowBackup,supportsRtl">
 
         <!-- (1) 액션바 없애기 android:theme="@style/AppTheme.NoActionBar" -->
 
@@ -60,8 +58,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ahn1.RegisterActivity" />
-        <activity android:name=".ahn1.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".ahn1.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -72,29 +71,28 @@
             android:name=".ahn1.Pop"
             android:theme="@style/AppTheme.Pop" />
         <activity android:name=".phu1.FirstActivity" />
-        <activity android:name=".phu1.NormalMode"/>
-        <activity android:name=".phu1.LoggedInWalk"/>
-        <activity android:name=".phu1.LoggedInRecord"/>
-        <activity android:name=".phu1.SettingActivity"/>
+        <activity android:name=".phu1.NormalMode" />
+        <activity android:name=".phu1.LoggedInWalk" />
+        <activity android:name=".phu1.LoggedInRecord" />
+        <activity android:name=".phu1.SettingActivity" />
 
         <!-- 생활지수 오픈소스 합치기 -->
-        <activity android:name=".ahn2.open1_Main1"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".ahn2.open1_Main2"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".ahn2.open1_Main3"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
         <activity
-            android:name="com.example.ggavi.registeration.ahn2.LifeJisu_MainActivity"
+            android:name=".ahn2.open1_Main1"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ahn2.open1_Main2"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ahn2.open1_Main3"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ahn2.LifeJisu_MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -111,7 +109,7 @@
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
 
-        <receiver android:name="com.example.ggavi.registeration.ahn2.mosquitoAppWidget">
+        <receiver android:name=".ahn2.mosquitoAppWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -121,35 +119,30 @@
                 android:resource="@xml/mosquito_app_widget_info" />
         </receiver>
 
-
         <!-- 두번째 오픈소스 합치기 -->
 
         <activity
             android:name=".ahn3.open2_PlaceActivity"
             android:label="Place"
-            android:theme="@style/NoActionbarTheme"/>
-
+            android:theme="@style/NoActionbarTheme" />
         <activity
             android:name=".ahn3.open2_PlaceThirdActivity"
             android:label="Place 액티비티" />
-
         <activity
             android:name=".ahn3.open2_PlaceThirdActivity2"
             android:label="Place 액티비티" />
-
         <activity
             android:name=".ahn3.open2_PlaceThirdActivity3"
             android:label="Place 액티비티" />
 
-
         <!-- 반장님 코드 합침 -->
-        <activity android:name=".lee1.SmsMainActivity"/>
+        <activity android:name=".lee1.SmsMainActivity" />
         <activity android:name=".lee2.bluegetheart" />
 
         <!-- 푸푸씨꺼 또 합침 -->
         <activity android:name=".phu1.ProfilePicture" />
-        <activity android:name=".phu1.ProfilePictureUpload"></activity>
-
+        <activity android:name=".phu1.ProfilePictureUpload" />
+        <activity android:name=".ahn1.CourseActivity"></activity>
     </application>
 
 </manifest>

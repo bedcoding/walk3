@@ -59,7 +59,7 @@ public class Record {
         this.date = date;
     }
 
-    String userId;    
+    String userId;
     String pedometer;
     String distance;
     String calorie;
@@ -67,6 +67,15 @@ public class Record {
     String speed;
     String date;
 
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    String datetime;
     public String getProgress() {
         return progress;
     }
@@ -77,7 +86,7 @@ public class Record {
 
     String progress;
 
-    public Record(String userId, String pedometer, String distance, String calorie, String time, String speed, String date, String progress) {
+    public Record(String userId, String pedometer, String distance, String calorie, String time, String speed, String date, String progress, String datetime) {
         this.userId = userId;
         this.pedometer = pedometer;
         this.distance = distance;
@@ -86,6 +95,7 @@ public class Record {
         this.speed = speed;
         this.date = date;
         this.progress = progress;
+        this.datetime = datetime;
     }
 
 

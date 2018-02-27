@@ -3,6 +3,7 @@ package com.example.ggavi.registeration.phu1;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -33,11 +34,9 @@ import java.util.List;
 public class Fragment_loggedInRecord extends Fragment {
 
 
-    // 푸푸씨가 만든 액티비티(activity)를 프래그먼트(fragment)로 수정
     private static String userID = MainActivity.userID;
 
     private ListView recordListView;
-    private RecordListAdapter adapter;
     private List<Record> recordList;
 
     private TextView hsPedo;
@@ -46,7 +45,14 @@ public class Fragment_loggedInRecord extends Fragment {
     private TextView hsTime;
     private TextView hsSpeed;
 
-    private TextView noRecAlert;
+    private TextView pedoDT;
+    private TextView disDT;
+    private TextView calDT;
+    private TextView timeDT;
+    private TextView speedDT;
+
+    Typeface font_two;
+    Typeface font_one;
 
     private Integer maxPedo=0;
     private Double maxDis=0.000;
@@ -54,6 +60,14 @@ public class Fragment_loggedInRecord extends Fragment {
     private Double maxTime=0.0;
     private String maxTimeS="00:00:000";
     private Double maxSpeed=0.0;
+
+    private TextView titleForHighScore;
+
+    private String pedoDatetime="";
+    private String disDatetime="";
+    private String calDatetime="";
+    private String timeDatetime="";
+    private String speedDatetime="";
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -102,9 +116,8 @@ public class Fragment_loggedInRecord extends Fragment {
     @Override    // 액티비티가 만들어질 때 어떠한 처리가 이뤄지는 부분
     public void onActivityCreated(Bundle b) {
         super.onActivityCreated(b);
-
-        recordListView = (ListView) getView().findViewById(R.id.recordListView);
-        recordList = new ArrayList<Record>();
+        font_one = Typeface.createFromAsset(getActivity().getAssets(), "fonts/font_one.ttf"); //TitilliumWeb-Light from Titillium Web by Accademia di Belle Arti di Urbino (1001freefonts.com)
+        font_two = Typeface.createFromAsset(getActivity().getAssets(), "fonts/font_two.ttf"); //NHC 고도 마음체 godoM
 
         //userID = getActivity().getIntent().getExtras().getString("userID").toString();
         //Intent intent = new Intent(getActivity(), LoggedInWalk.class);
@@ -115,13 +128,19 @@ public class Fragment_loggedInRecord extends Fragment {
         hsCal = (TextView)getView().findViewById(R.id.hsCal);
         hsTime = (TextView)getView().findViewById(R.id.hsTime);
         hsSpeed = (TextView)getView().findViewById(R.id.hsSpeed);
-        noRecAlert = (TextView)getView().findViewById(R.id.noRecAlert);
 
-        // adapter에 해당 List를 매칭 (각각 차례대로 매칭)
-        adapter = new RecordListAdapter(getActivity().getApplicationContext(), recordList);
-        recordListView.setAdapter(adapter);
+        pedoDT = (TextView)getView().findViewById(R.id.pedoDT);
+        disDT = (TextView)getView().findViewById(R.id.disDT);
+        calDT = (TextView)getView().findViewById(R.id.calDT);
+        timeDT = (TextView)getView().findViewById(R.id.timeDT);
+        speedDT = (TextView)getView().findViewById(R.id.speedDT);
 
-        new Fragment_loggedInRecord.BackgroundTask().execute();
+        titleForHighScore = (TextView)getView().findViewById(R.id.titleForHighScore);
+        titleForHighScore.setText(userID+"님의 기록 중 최고의 기록들입니다.");
+        titleForHighScore.setTypeface(font_two);
+
+        recordList = new ArrayList<Record>();
+        new BackgroundTask().execute();
 
     }
 
@@ -201,13 +220,9 @@ public class Fragment_loggedInRecord extends Fragment {
                 JSONArray jsonArray = jsonObject.getJSONArray("response");  //아까 변수 이름
 
                 System.out.println("length of jsonArray>>"+jsonArray.length());
-                if(jsonArray.length()==0){
-                    noRecAlert.setVisibility(View.VISIBLE);
-                }else{
-                    noRecAlert.setVisibility(View.GONE);
-                }
+
                 int count = 0;
-                String userId, pedometer, distance, calorie, time, speed, date, progress;
+                String userId, pedometer, distance, calorie, time, speed, date, progress, datetime;
 
                 while (count < jsonArray.length()) {
                     // 현재 배열의 원소값을 저장
@@ -222,30 +237,38 @@ public class Fragment_loggedInRecord extends Fragment {
                     time = object.getString("time");
                     speed = object.getString("speed");
                     date = object.getString("date");
+                    int pos = date.indexOf(" ");
+                    date = date.substring(0,pos);
+                    datetime= object.getString("date");
                     progress = object.getString("progress");
 
                     // 하나의 공지사항에 대한 객체를 만들어줌
-                    Record record = new Record(userId, pedometer, distance, calorie, time, speed, date, progress);
+                    Record record = new Record(userId, pedometer, distance, calorie, time, speed, date, progress,datetime);
 
                     // 리스트에 추가해줌
                     recordList.add(record);
-                    adapter.notifyDataSetChanged();
                     count++;
                 }
 
 
+                System.out.println("BEFORE"+maxTime);
                 for(int i=0;i<recordList.size();i++){
                     if(maxPedo<Integer.parseInt(recordList.get(i).getPedometer().trim())){
                         maxPedo = Integer.parseInt(recordList.get(i).getPedometer().trim());
+                        pedoDatetime = recordList.get(i).getDatetime().trim();
                     }
                     if(maxDis<Double.parseDouble(recordList.get(i).getDistance().trim())){
                         maxDis = Double.parseDouble(recordList.get(i).getDistance().trim());
+                        disDatetime = recordList.get(i).getDatetime().trim();
                     }
                     if(maxCal<Double.parseDouble(recordList.get(i).getCalorie().trim())){
                         maxCal = Double.parseDouble(recordList.get(i).getCalorie().trim());
+                        calDatetime = recordList.get(i).getDatetime().trim();
+
                     }
                     if(maxSpeed<Double.parseDouble(recordList.get(i).getSpeed().trim())){
                         maxSpeed = Double.parseDouble(recordList.get(i).getSpeed().trim());
+                        speedDatetime = recordList.get(i).getDatetime().trim();
                     }
                     String time1 = recordList.get(i).getTime().trim();
                     int pos_1 = time1.indexOf(":");
@@ -265,15 +288,27 @@ public class Fragment_loggedInRecord extends Fragment {
                     if(maxTime<totalTime){
                         maxTime = totalTime;
                         maxTimeS = recordList.get(i).getTime();
+                        timeDatetime = recordList.get(i).getDatetime().trim();
                     }
                 }
+                System.out.println("check datetime>>"+calDatetime);
 
                 hsPedo.setText(String.valueOf(maxPedo));
+                hsPedo.setTypeface(font_one);
                 hsDis.setText(Double.toString(maxDis)+"km");
-                hsCal.setText(Double.toString(maxCal));
+                hsDis.setTypeface(font_one);
+                hsCal.setText(Double.toString(maxCal)+"cal");
+                hsCal.setTypeface(font_one);
                 hsSpeed.setText(Double.toString(maxSpeed)+"km/h");
+                hsSpeed.setTypeface(font_one);
                 hsTime.setText(maxTimeS);
+                hsTime.setTypeface(font_one);
 
+                pedoDT.setText(pedoDatetime);
+                disDT.setText(disDatetime);
+                calDT.setText(calDatetime);
+                speedDT.setText(speedDatetime);
+                timeDT.setText(timeDatetime);
 
 
                 // (로딩창 띄우기 작업 3/3)
