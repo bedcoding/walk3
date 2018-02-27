@@ -838,7 +838,7 @@ if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_F
 
             if (location != null) {
                 if ((location.getAccuracy() > 15 && this != null)) { //if gps connection is week (gps수신이 약한 경우)
-                    //Toast.makeText(LoggedInWalk.this, "GPS 수신이 약하기 때문에 거리 측정이 어렵습니다.", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(LoggedInWalk.this, "GPS 수신이 약하기 때문에 거리 측정이 어렵습니다.", Toast.LENGTH_SHORT).show(); //
                     //mentioning "GPS connection is week. It is difficult to predict the distance.
                 }
 
