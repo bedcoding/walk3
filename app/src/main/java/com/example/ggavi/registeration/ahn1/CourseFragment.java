@@ -327,7 +327,7 @@ public class CourseFragment extends Fragment {
         // 초기화 (해당 리스트 뷰와 일치시킴)
         courseListView = (ListView) getView().findViewById(R.id.courseListView);
         courseList = new ArrayList<Course>();
-        adapter = new CourseListAdapter(getContext().getApplicationContext(), courseList, this);  //12강 this 추가
+        adapter = new CourseListAdapter(getContext().getApplicationContext(), courseList, this);  //(12)this 추가
         courseListView.setAdapter(adapter);
 
 

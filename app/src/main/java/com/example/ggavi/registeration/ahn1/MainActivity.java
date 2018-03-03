@@ -521,8 +521,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // 1번째 버튼: 바깥 환경
             case R.id.open1_weather:
-                Intent intent = new Intent(getApplicationContext(), open1_Main1.class);
-                startActivity(intent);
+                Intent intent1 = new Intent(getApplicationContext(), open1_Main1.class);
+                startActivity(intent1);
                 return true;
 
             // 2번째 버튼: 모기 정보
@@ -539,8 +539,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             // 4번째 버튼
             case R.id.open2_Place:
-                Intent intent6 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
-                startActivity(intent6);
+                Intent intent4 = new Intent(getApplicationContext(), open2_PlaceActivity.class);
+                startActivity(intent4);
+                return true;
+
+            // 5번째 버튼
+            case R.id.course_rank:
+                Intent intent5 = new Intent(getApplicationContext(), CourseRankActivity.class);
+                intent5.putExtra("userID", userID);   // 아이디 값 전달
+                startActivity(intent5);
                 return true;
 
             default:

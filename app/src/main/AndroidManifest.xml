@@ -142,7 +142,9 @@
         <!-- 푸푸씨꺼 또 합침 -->
         <activity android:name=".phu1.ProfilePicture" />
         <activity android:name=".phu1.ProfilePictureUpload" />
-        <activity android:name=".ahn1.CourseActivity"></activity>
+
+        <!--추가-->
+        <activity android:name=".ahn1.CourseRankActivity"></activity>
     </application>
 
 </manifest>

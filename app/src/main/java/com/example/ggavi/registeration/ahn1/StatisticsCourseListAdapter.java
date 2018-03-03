@@ -64,85 +64,12 @@ public class StatisticsCourseListAdapter extends BaseAdapter {
 
 
         // statistics.xml이라는 레이아웃에 있는 모든 원소가 하나의 변수로써 자리잡게 되었다.
-        // 수강신청 코드를 가져와서 고쳤기 때문에 대부분 안쓰이므로 화면에서 안보이게 해놨다.
-        //TextView courseGrade = (TextView) v.findViewById(R.id.courseGrade);
         TextView courseTitle = (TextView) v.findViewById(R.id.courseTitle);
-        //TextView courseDivide = (TextView) v.findViewById(R.id.courseDivide);
         TextView coursePersonnel = (TextView) v.findViewById(R.id.coursePersonnel);
-        //TextView courseRate = (TextView) v.findViewById(R.id.courseRate);
-
 
         courseTitle.setText(courseList.get(i).getCourseTitle());
         coursePersonnel.setText("함께 좋아하는 사람수: " + courseList.get(i).getCourseRival());
 
-
-/*
-
-        // courseList에서 특정한 원소를 가져올때
-        // 그 원소가 "제한 없음"이라는 값을 가지거나
-        // 혹은 Grade 값이 현재 비어있는 경우 "모든 학년"이라고 보여진다.
-        if(courseList.get(i).getCourseGrade().equals("제한 없음") || courseList.get(i).getCourseGrade().equals(""))
-        {
-            courseGrade.setText("모든 사람");
-        }
-
-        else
-        {
-            courseGrade.setText(courseList.get(i).getCourseGrade() + "학년");
-        }
-
-
-        courseDivide.setText(courseList.get(i).getCourseDivide() + "분반");
-
-
-        // 만약 현재 courseList에서 가져온 현재 강의정보에 제한인원이 0이라면
-        if(courseList.get(i).getCoursePersonnel() == 0)
-        {
-            coursePersonnel.setText("인원제한 없음");
-            courseRate.setText("");  //인원 제한이 없으면 경쟁률도 0
-        }
-
-        else
-        {
-            // 인원 제한이 있는 경우 (현재 강의를 등록한 라이벌들 / 강의를 들을 수 있는 총 인원)
-            coursePersonnel.setText("신청인원: " + courseList.get(i).getCourseRival() + "/" + courseList.get(i).getCoursePersonnel());
-
-            // 경쟁률 계산
-            int rate = ((int) (((double) courseList.get(i).getCourseRival() * 100 / courseList.get(i).getCoursePersonnel()) + 0.5));  // (+ 0.5는 반올림)
-            courseRate.setText("경쟁률: " + rate + "%");
-
-            // 경쟁률이 아주 낮다면 초록색(res폴더 -> values폴더 -> colors.xml에 있는 colorSafe 색깔)
-            if(rate < 20)
-            {
-                courseRate.setTextColor(parent.getResources().getColor(R.color.colorSafe));
-            }
-
-            // 경쟁률이 낮다면
-            else if(rate < 50)
-            {
-                courseRate.setTextColor(parent.getResources().getColor(R.color.colorPrimary));
-            }
-
-            // 경쟁률이 1:1 이하
-            else if(rate < 100)
-            {
-                courseRate.setTextColor(parent.getResources().getColor(R.color.colorDanger));
-            }
-
-            // 경쟁률이 높다면
-            else if(rate < 150)
-            {
-                courseRate.setTextColor(parent.getResources().getColor(R.color.colorWarning));
-            }
-
-            // 경쟁률이 겁나 높다면
-            else
-            {
-                courseRate.setTextColor(parent.getResources().getColor(R.color.colorRed));
-            }
-        }
-
-*/
         v.setTag(courseList.get(i).getCourseID());
 
 
@@ -166,7 +93,7 @@ public class StatisticsCourseListAdapter extends BaseAdapter {
                             if (success) {
                                 new CustomConfirmDialog().showConfirmDialog(parent.getActivity(),"삭제하였습니다.",true);
 
-                                // 삭제한 만큼 학점도 빼준다.
+                                // 삭제한 만큼 코스도 빼준다.
                                 StatisticsFragment.totalCredit -= courseList.get(i).getCourseCredit();
                                 StatisticsFragment.credit.setText(StatisticsFragment.totalCredit + "개");
                                 courseList.remove(i);    // 리스트에서 삭제
@@ -198,4 +125,3 @@ public class StatisticsCourseListAdapter extends BaseAdapter {
         return v;
     }
 }
-

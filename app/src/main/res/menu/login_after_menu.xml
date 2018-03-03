@@ -12,16 +12,13 @@
     <item
         android:id="@+id/open1_air"
         android:title= "대기 정보"/>
-<!--
-    <item
-        android:id="@+id/open2_Maps"
-        android:title="코스 위치" />
 
-    <item
-        android:id="@+id/open2_Course"
-        android:title="코스 요약" />
- -->
     <item
         android:id="@+id/open2_Place"
         android:title="추천 코스" />
+
+    <item
+        android:id="@+id/course_rank"
+        android:title="인기 코스" />
+
 </menu>

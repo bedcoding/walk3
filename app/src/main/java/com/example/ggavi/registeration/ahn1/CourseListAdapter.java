@@ -33,7 +33,7 @@ public class CourseListAdapter extends BaseAdapter {
 
     private Context context;
     private List<Course> courseList;      // Course가 들어가는 리스트를 만들어줌
-    private Fragment parent;              // 12강 추가
+    private Fragment parent;              // (12) 추가
 
     // (13) 해당 서버 프로그램을 이용해서 코스가 중복되는지 체크
     private String userID = MainActivity.userID;  // MainActivity에 있는 public 형태의 userID를 가져와서 해당 사용자의 아이디를 저장
@@ -84,61 +84,11 @@ public class CourseListAdapter extends BaseAdapter {
 
         // course라는 레이아웃에 있는 모든 원소가 하나의 변수로써 자리잡게 되었다.
         // 근데 레이아웃에서 다 안보이게 처리해놔서 현재 대부분이 더미데이터로 남아 있다.
-        //TextView courseGrade = (TextView) v.findViewById(R.id.courseGrade);
         TextView courseTitle = (TextView) v.findViewById(R.id.courseTitle);
-        //TextView courseCredit = (TextView) v.findViewById(R.id.courseCredit);
-        //TextView courseDivide = (TextView) v.findViewById(R.id.courseDivide);
-        //TextView coursePersonnel = (TextView) v.findViewById(R.id.coursePersonnel);
-        //TextView courseProfessor = (TextView) v.findViewById(R.id.courseProfessor);
-        //TextView courseTime = (TextView) v.findViewById(R.id.courseTime);
+
 
 
         courseTitle.setText(courseList.get(i).getCourseTitle());
-        // courseList에서 특정한 원소를 가져왔는데
-        // 그 원소가 "제한 없음"이라는 값을 가지거나
-        // 혹은 Grade 값이 현재 비어있는 경우 "모든 학년"이라고 보여진다.
-
-
-/* 본래 수강신청 시간표 만들때 작성했었던 코드. 이걸 길추천으로 바꿨으므로 제거함.
-        if(courseList.get(i).getCourseGrade().equals("제한 없음") || courseList.get(i).getCourseGrade().equals(""))
-        {
-            courseGrade.setText("모든 학년");
-        }
-
-        else
-        {
-            courseGrade.setText(courseList.get(i).getCourseGrade() + "학년");
-        }
-
-        courseCredit.setText(courseList.get(i).getCourseCredit() + "학점");
-        courseDivide.setText(courseList.get(i).getCourseDivide() + "분반");
-
-
-        // 만약 현재 courseList에서 가져온 현재 강의정보에 제한인원이 0이라면
-        if(courseList.get(i).getCoursePersonnel() == 0)
-        {
-            coursePersonnel.setText("인원 제한 없음");
-        }
-
-        else
-        {
-            coursePersonnel.setText("제한 인원 : " + courseList.get(i).getCoursePersonnel() + "명");
-        }
-
-        // 교수 이름이 공백일 경우
-        if(courseList.get(i).getCourseProfessor().equals(""))
-        {
-            courseProfessor.setText("개인 연구");
-        }
-
-        else
-        {
-            courseProfessor.setText(courseList.get(i).getCourseProfessor() + "교수님");
-        }
-
-        courseTime.setText(courseList.get(i).getCourseTime() + "");
-
-*/
 
         // 현재 코스에서 강의 ID값을 태그로 삼을 수 있도록 한다.
         v.setTag(courseList.get(i).getCourseID());
@@ -180,7 +130,7 @@ public class CourseListAdapter extends BaseAdapter {
                 // 둘 다 아니면 정상적으로 추가된다.
                 else
                 {
-                    // RegisterActivity.java에서 가져와서 복붙 (12강)
+                    // RegisterActivity.java에서 가져와서 복붙 (12)
                     // 정상적으로 ID 값을 입력했을 경우 중복체크 시작
                     Response.Listener<String> responseListener = new Response.Listener<String>() {
                         @Override

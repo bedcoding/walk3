@@ -117,7 +117,7 @@ public class StatisticsFragment extends Fragment {
         rankAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.rank, R.layout.spinner_item);  // res -> spinner_item.xml 파일과 연결
         rankSpinner.setAdapter(rankAdapter);
 
-        rankSpinner.setPopupBackgroundResource(R.color.colorPrimary);   // 해당 스피너를 선택했을 때 나오는 목록 배경색깔
+        //rankSpinner.setPopupBackgroundResource(R.color.colorGray);   // 해당 스피너를 선택했을 때 나오는 목록 배경색깔
 
 
         // (21)

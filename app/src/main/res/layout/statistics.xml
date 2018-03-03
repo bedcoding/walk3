@@ -6,12 +6,13 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:layout_width="60dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:gravity="center"
+        android:typeface="serif"
         android:text="삭제"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/custombtn"
         android:textColor="#ffffff"
         android:textSize="18dp"
         android:id="@+id/deleteButton"
@@ -26,41 +27,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/colorPrimary">
+            android:orientation="horizontal">
 
-<!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1학년"
-                android:id="@+id/courseGrade"
-                android:layout_gravity="center"
-                android:padding="3dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"/>
--->
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="코스 이름"
+                android:text="road name"
+                android:typeface="serif"
                 android:id="@+id/courseTitle"
                 android:layout_gravity="center"
                 android:padding="5dp"
-                android:textColor="#ffffff"
-                android:textColorHint="#ffffff"
+                android:textColor="#000000"
+                android:textColorHint="#000000"
                 android:textStyle="bold"/>
-<!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1분반"
-                android:id="@+id/courseDivide"
-                android:layout_gravity="center"
-                android:padding="3dp"
-                android:textColor="#ffffff"/>
--->
         </LinearLayout>
 
         <LinearLayout
@@ -75,22 +55,9 @@
                 android:text="함께 좋아하는 사람수: 1"
                 android:id="@+id/coursePersonnel"
                 android:layout_gravity="center"
-                android:padding="5dp"
-                android:textColor="@color/colorPrimary" />
-
-<!--
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="경쟁률: 133%"
-                android:id="@+id/courseRate"
-                android:layout_gravity="center"
-                android:padding="2dp"
-                android:textColor="@color/colorPrimaryDark"
-                android:textColorHint="@color/colorPrimaryDark"/>
--->
+                android:typeface="serif"
+                android:textColor="#758487" />
         </LinearLayout>
-
 
     </LinearLayout>
 </LinearLayout>

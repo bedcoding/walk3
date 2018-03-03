@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -68,28 +66,6 @@
                 android:radius="18dp"/>
         </LinearLayout>
 
-<!--
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/statisticsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/button_back_prime_color"
-                android:padding="15dp"
-                android:text=" 인기순 "
-                android:fontFamily="sans-serif-condensed"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textColor="@color/White"
-                android:shadowColor="@color/Main_Blue_Dark"
-                android:gravity="center" />
-        </LinearLayout>
-        -->
     </LinearLayout>
 
     <View
@@ -149,7 +125,7 @@
         </LinearLayout>
 
 
-        <!-- 걷기 시작, 길 목록, 인기순 중 하나를 선택했을 때 이걸로 화면이 바뀜-->
+        <!-- 걷기 시작, 나의 기록 중 하나를 선택했을 때 이걸로 화면이 바뀜-->
         <RelativeLayout
             android:id="@+id/fragment"
             android:layout_width="match_parent"

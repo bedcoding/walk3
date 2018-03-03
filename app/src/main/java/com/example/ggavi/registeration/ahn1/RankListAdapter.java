@@ -56,75 +56,18 @@ public class RankListAdapter extends BaseAdapter {
         View v = View.inflate(context, R.layout.rank, null);  // rank.xml
 
         // rank.xml이라는 레이아웃에 있는 모든 원소가 하나의 변수로써 자리잡게 되었다.
-        // 수강신청 코드를 길추천 코드로 고치면서 안 쓰이는 값은 화면에 안보이게 해놨다.
-        // DB에는 그대로 아래 정보들이 남아 있어서 그냥 1로 넣어두고 안보이게 처리(...)
         TextView rankTextView = (TextView) v.findViewById(R.id.rankTextView);
-        //TextView courseGrade = (TextView) v.findViewById(R.id.courseGrade);
         TextView courseTitle = (TextView) v.findViewById(R.id.courseTitle);
-        //TextView courseCredit = (TextView) v.findViewById(R.id.courseCredit);
-        //TextView courseDivide = (TextView) v.findViewById(R.id.courseDivide);
-        //TextView coursePersonnel = (TextView) v.findViewById(R.id.coursePersonnel);
-        //TextView courseProfessor = (TextView) v.findViewById(R.id.courseProfessor);
-        //TextView courseTime = (TextView) v.findViewById(R.id.courseTime);
 
         rankTextView.setText((i+1) + "위");   // 몇 등인지 보여줌
 
         // 1위가 아닐 경우 모두 같은 배경색
         if(i != 0)
         {
-            rankTextView.setBackgroundColor(parent.getResources().getColor(R.color.colorPrimaryDark));
+            rankTextView.setBackgroundColor(parent.getResources().getColor(R.color.whiteBlack));
         }
 
         courseTitle.setText(courseList.get(i).getCourseTitle());
-
-/*
-        // courseList에서 특정한 원소를 가져올때
-        // 그 원소가 "제한 없음"이라는 값을 가지거나
-        // 혹은 Grade 값이 현재 비어있는 경우 "모든 학년"이라고 보여진다.
-        if(courseList.get(i).getCourseGrade().equals("제한 없음") || courseList.get(i).getCourseGrade().equals(""))
-        {
-            courseGrade.setText("모든 학년");
-        }
-
-        else
-        {
-            courseGrade.setText(courseList.get(i).getCourseGrade() + "학년");
-        }
-
-        courseCredit.setText(courseList.get(i).getCourseCredit() + "학점");
-        courseDivide.setText(courseList.get(i).getCourseDivide() + "분반");
-
-
-        // 만약 현재 courseList에서 가져온 현재 강의정보에 제한인원이 0이라면
-        if(courseList.get(i).getCoursePersonnel() == 0)
-        {
-            coursePersonnel.setText("인원제한 없음");
-        }
-
-        else
-        {
-            // 인원 제한이 있는 경우 (현재 강의를 등록한 라이벌들 / 강의를 들을 수 있는 총 인원)
-            coursePersonnel.setText("제한 인원: " + courseList.get(i).getCoursePersonnel() + " 명");
-        }
-
-
-
-        // 교수 이름이 비어있는 경우
-        if(courseList.get(i).getCourseProfessor().equals(""))
-        {
-            courseProfessor.setText("개인 연구");
-        }
-
-        // 교수 이름이 이미 있는 경우
-        else
-        {
-            courseProfessor.setText(courseList.get(i).getCourseProfessor() + "교수님");
-        }
-
-        // 이렇게 하면 정상적으로 모든 값이 출력되서 디자인에 들어감
-        courseTime.setText(courseList.get(i).getCourseTime() + "");
-
-        */
 
         v.setTag(courseList.get(i).getCourseID());
         return v;
