@@ -143,8 +143,8 @@
         <activity android:name=".phu1.ProfilePicture" />
         <activity android:name=".phu1.ProfilePictureUpload" />
 
-        <!--추가-->
-        <activity android:name=".ahn1.CourseRankActivity"></activity>
+        <!-- 추가 -->
+        <activity android:name=".ahn1.CourseRankActivity" />
     </application>
 
 </manifest>
