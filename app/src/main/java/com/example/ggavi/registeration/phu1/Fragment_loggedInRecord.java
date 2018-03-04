@@ -34,7 +34,7 @@ import java.util.List;
 public class Fragment_loggedInRecord extends Fragment {
 
 
-    private static String userID = MainActivity.userID;
+    private static String userID;
 
     private ListView recordListView;
     private List<Record> recordList;
@@ -93,6 +93,7 @@ public class Fragment_loggedInRecord extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment Fragment_loggedInRecord.
      */
+
     // TODO: Rename and change types and number of parameters
     public static Fragment_loggedInRecord newInstance(String param1, String param2) {
         Fragment_loggedInRecord fragment = new Fragment_loggedInRecord();
@@ -103,7 +104,7 @@ public class Fragment_loggedInRecord extends Fragment {
         return fragment;
     }
 
-        @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -119,9 +120,8 @@ public class Fragment_loggedInRecord extends Fragment {
         font_one = Typeface.createFromAsset(getActivity().getAssets(), "fonts/font_one.ttf"); //TitilliumWeb-Light from Titillium Web by Accademia di Belle Arti di Urbino (1001freefonts.com)
         font_two = Typeface.createFromAsset(getActivity().getAssets(), "fonts/font_two.ttf"); //NHC 고도 마음체 godoM
 
-        //userID = getActivity().getIntent().getExtras().getString("userID").toString();
-        //Intent intent = new Intent(getActivity(), LoggedInWalk.class);
-        //intent.putExtra("userID", userID);
+        userID =MainActivity.userID;
+        System.out.println("fragment id check>>"+userID);
 
         hsPedo = (TextView)getView().findViewById(R.id.hsPedo);
         hsDis = (TextView)getView().findViewById(R.id.hsDis);
@@ -136,11 +136,11 @@ public class Fragment_loggedInRecord extends Fragment {
         speedDT = (TextView)getView().findViewById(R.id.speedDT);
 
         titleForHighScore = (TextView)getView().findViewById(R.id.titleForHighScore);
-        titleForHighScore.setText(userID + "님의 최고 기록");
+        titleForHighScore.setText(userID+"님의 최고 기록");
         titleForHighScore.setTypeface(font_two);
 
         recordList = new ArrayList<Record>();
-        new BackgroundTask().execute();
+        new Fragment_loggedInRecord.BackgroundTask().execute();
 
     }
 
@@ -327,18 +327,6 @@ public class Fragment_loggedInRecord extends Fragment {
         }
     }
 
-    /*
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
-    */
 
     @Override
     public void onDetach() {
