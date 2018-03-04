@@ -136,7 +136,7 @@ public class Fragment_loggedInRecord extends Fragment {
         speedDT = (TextView)getView().findViewById(R.id.speedDT);
 
         titleForHighScore = (TextView)getView().findViewById(R.id.titleForHighScore);
-        titleForHighScore.setText(userID+"님의 기록 중 최고의 기록들입니다.");
+        titleForHighScore.setText(userID + "님의 최고 기록");
         titleForHighScore.setTypeface(font_two);
 
         recordList = new ArrayList<Record>();
